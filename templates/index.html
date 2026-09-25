@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Sentiment Analysis</title>
+
+
+    <!-- =================================================
+         BOOTSTRAP
+         ================================================= -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- =================================================
+         BOOTSTRAP ICONS
+         ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- =================================================
+         INDEX CSS
+         ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/index.css') }}">
+
+
+    <!-- =================================================
+         EXISTING 3D AI CSS
+         ================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/3d-ai.css') }}">
+
+
+    <!-- =================================================
+         3D BLUE AI OVERRIDE CSS
+         ================================================= -->
+
+    <style>
+
+        /* =================================================
+           3D BLUE AI HOME PAGE
+           ================================================= */
+
+        body.ai-home-page {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            color: #ffffff;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(0, 217, 255, 0.25),
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(76, 81, 255, 0.28),
+                    transparent 40%
+                ),
+
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(0, 120, 255, 0.20),
+                    transparent 45%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #020617 0%,
+                    #061a3a 45%,
+                    #03112c 100%
+                );
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =================================================
+           GLOBAL BLUE GLOW
+           ================================================= */
+
+        body.ai-home-page::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 600px;
+
+            height: 600px;
+
+            top: -220px;
+
+            left: -180px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 217, 255, 0.28),
+                    transparent 68%
+                );
+
+            filter: blur(25px);
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            animation:
+                blueGlowMove
+                8s ease-in-out infinite alternate;
+
+        }
+
+
+        /* =================================================
+           SECOND BLUE / PURPLE GLOW
+           ================================================= */
+
+        body.ai-home-page::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 650px;
+
+            height: 650px;
+
+            right: -250px;
+
+            bottom: -280px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(77, 92, 255, 0.30),
+                    transparent 68%
+                );
+
+            filter: blur(30px);
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            animation:
+                blueGlowMove2
+                10s ease-in-out infinite alternate;
+
+        }
+
+
+        /* =================================================
+           BLUE GLOW ANIMATION 1
+           ================================================= */
+
+        @keyframes blueGlowMove {
+
+            0% {
+
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
+
+            }
+
+            100% {
+
+                transform:
+                    translate3d(120px, 80px, 0)
+                    scale(1.15);
+
+            }
+
+        }
+
+
+        /* =================================================
+           BLUE GLOW ANIMATION 2
+           ================================================= */
+
+        @keyframes blueGlowMove2 {
+
+            0% {
+
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
+
+            }
+
+            100% {
+
+                transform:
+                    translate3d(-100px, -80px, 0)
+                    scale(1.12);
+
+            }
+
+        }
+
+
+        /* =================================================
+           HERO SECTION
+           ================================================= */
+
+        body.ai-home-page .hero-section {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0, 180, 255, 0.18),
+                    rgba(41, 66, 180, 0.20),
+                    rgba(3, 17, 44, 0.30)
+                );
+
+            border-bottom:
+                1px solid
+                rgba(0, 217, 255, 0.20);
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, 0.45);
+
+        }
+
+
+        /* =================================================
+           HERO 3D GRID
+           ================================================= */
+
+        body.ai-home-page .hero-section::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: -10%;
+
+            right: -10%;
+
+            bottom: -35%;
+
+            height: 80%;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0, 217, 255, 0.16) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(0, 217, 255, 0.16) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                45px 45px;
+
+            transform:
+                perspective(500px)
+                rotateX(62deg);
+
+            transform-origin:
+                center bottom;
+
+            opacity: 0.45;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+
+        /* =================================================
+           HERO BLUE LIGHT
+           ================================================= */
+
+        body.ai-home-page .hero-section::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            top: -220px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 217, 255, 0.18),
+                    transparent 70%
+                );
+
+            filter: blur(25px);
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+
+        /* =================================================
+           HERO CONTENT
+           ================================================= */
+
+        body.ai-home-page .hero-section > * {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* =================================================
+           HERO TITLE
+           ================================================= */
+
+        body.ai-home-page .hero-section h1 {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-shadow:
+                0 0 15px
+                rgba(0, 217, 255, 0.45),
+
+                0 0 35px
+                rgba(0, 120, 255, 0.25);
+
+        }
+
+
+        /* =================================================
+           EMOTION BLUE TEXT
+           ================================================= */
+
+        body.ai-home-page .hero-section h1 span {
+
+            color: #00d9ff !important;
+
+            text-shadow:
+                0 0 10px
+                rgba(0, 217, 255, 0.65),
+
+                0 0 25px
+                rgba(0, 217, 255, 0.35);
+
+        }
+
+
+        /* =================================================
+           HERO DESCRIPTION
+           ================================================= */
+
+        body.ai-home-page .hero-section p {
+
+            color:
+                rgba(235, 248, 255, 0.82);
+
+            text-shadow:
+                0 2px 10px
+                rgba(0,0,0,0.25);
+
+        }
+
+
+        /* =================================================
+           HERO BADGE
+           ================================================= */
+
+        body.ai-home-page .hero-badge {
+
+            background:
+                rgba(0, 217, 255, 0.08);
+
+            border:
+                1px solid
+                rgba(0, 217, 255, 0.25);
+
+            box-shadow:
+                0 0 25px
+                rgba(0, 217, 255, 0.10);
+
+            backdrop-filter:
+                blur(10px);
+
+        }
+
+
+        /* =================================================
+           AI ORB BLUE GLOW
+           ================================================= */
+
+        body.ai-home-page .ai-orb {
+
+            filter:
+                drop-shadow(
+                    0 0 20px
+                    rgba(0, 217, 255, 0.35)
+                );
+
+        }
+
+
+        /* =================================================
+           ANALYSIS CARD
+           ================================================= */
+
+        body.ai-home-page .analysis-card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(5, 30, 65, 0.88),
+                    rgba(3, 15, 35, 0.82)
+                );
+
+            border:
+                1px solid
+                rgba(0, 217, 255, 0.16);
+
+            box-shadow:
+
+                0 25px 70px
+                rgba(0, 0, 0, 0.45),
+
+                inset 0 1px 0
+                rgba(255,255,255,0.08);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+        }
+
+
+        /* =================================================
+           ANALYSIS CARD BLUE GLOW
+           ================================================= */
+
+        body.ai-home-page .analysis-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+
+            height: 280px;
+
+            top: -150px;
+
+            right: -120px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 217, 255, 0.18),
+                    transparent 70%
+                );
+
+            filter: blur(10px);
+
+            pointer-events: none;
+
+        }
+
+
+        /* =================================================
+           TEXTAREA BLUE STYLE
+           ================================================= */
+
+        body.ai-home-page textarea {
+
+            background:
+                rgba(1, 12, 28, 0.75) !important;
+
+            color:
+                #ffffff !important;
+
+            border:
+                1px solid
+                rgba(0, 217, 255, 0.20) !important;
+
+            box-shadow:
+                inset 0 0 20px
+                rgba(0, 0, 0, 0.20);
+
+        }
+
+
+        body.ai-home-page textarea:focus {
+
+            border-color:
+                rgba(0, 217, 255, 0.60) !important;
+
+            box-shadow:
+
+                0 0 0 3px
+                rgba(0, 217, 255, 0.08),
+
+                0 0 25px
+                rgba(0, 217, 255, 0.12),
+
+                inset 0 0 20px
+                rgba(0, 0, 0, 0.20);
+
+            outline: none;
+
+        }
+
+
+        body.ai-home-page textarea::placeholder {
+
+            color:
+                rgba(220, 240, 255, 0.48);
+
+        }
+
+
+        /* =================================================
+           ANALYZE BUTTON
+           ================================================= */
+
+        body.ai-home-page .analyze-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0088dd,
+                    #3458ff,
+                    #694cff
+                );
+
+            box-shadow:
+
+                0 15px 35px
+                rgba(0, 100, 255, 0.25),
+
+                0 0 25px
+                rgba(0, 217, 255, 0.10);
+
+        }
+
+
+        body.ai-home-page .analyze-btn:hover {
+
+            box-shadow:
+
+                0 20px 45px
+                rgba(0, 100, 255, 0.35),
+
+                0 0 35px
+                rgba(0, 217, 255, 0.20);
+
+        }
+
+
+        /* =================================================
+           FEATURES
+           ================================================= */
+
+        body.ai-home-page .feature-card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(8, 35, 70, 0.80),
+                    rgba(3, 17, 38, 0.75)
+                );
+
+            border:
+                1px solid
+                rgba(0, 217, 255, 0.12);
+
+            backdrop-filter:
+                blur(15px);
+
+            -webkit-backdrop-filter:
+                blur(15px);
+
+        }
+
+
+        /* =================================================
+           FOOTER
+           ================================================= */
+
+        body.ai-home-page .ai-footer {
+
+            background:
+                rgba(2, 10, 25, 0.80);
+
+            border-top:
+                1px solid
+                rgba(0, 217, 255, 0.12);
+
+        }
+
+
+        /* =================================================
+           MOBILE
+           ================================================= */
+
+        @media (max-width: 768px) {
+
+            body.ai-home-page .hero-section::before {
+
+                background-size:
+                    30px 30px;
+
+            }
+
+        }
+
+
+
+/* =================================================
+   SHARE PREDICTION BUTTON
+   ================================================= */
+
+.share-prediction-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.share-form {
+    margin: 0;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 13px 28px;
+
+    border: 1px solid rgba(0, 217, 255, 0.35);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 136, 221, 0.95),
+            rgba(52, 88, 255, 0.95),
+            rgba(105, 76, 255, 0.95)
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0, 100, 255, 0.25),
+        0 0 20px rgba(0, 217, 255, 0.10);
+
+    transition: all 0.3s ease;
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 100, 255, 0.40),
+        0 0 30px rgba(0, 217, 255, 0.25);
+}
+
+.share-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 576px) {
+
+    .share-btn {
+        width: 100%;
+        padding: 12px 22px;
+    }
+
+    .share-prediction-section {
+        padding: 0 10px;
+    }
+
+}
+    </style>
+
+</head>
+
+
+<body class="ai-home-page">
+
+
+<!-- =====================================================
+     3D AI BACKGROUND
+     ===================================================== -->
+
+<div class="ai-3d-background">
+
+    <div class="ai-glow glow-one"></div>
+
+    <div class="ai-glow glow-two"></div>
+
+    <div class="ai-glow glow-three"></div>
+
+
+    <!-- Floating particles -->
+
+    <div class="ai-particles">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     ORIGINAL BACKGROUND EFFECTS
+     ===================================================== -->
+
+<div class="background-effects">
+
+    <span class="particle p1"></span>
+    <span class="particle p2"></span>
+    <span class="particle p3"></span>
+    <span class="particle p4"></span>
+    <span class="particle p5"></span>
+    <span class="particle p6"></span>
+    <span class="particle p7"></span>
+    <span class="particle p8"></span>
+    <span class="particle p9"></span>
+    <span class="particle p10"></span>
+
+</div>
+
+
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
+
+<nav class="ai-navbar">
+
+
+    <!-- BRAND -->
+
+    <a
+        href="{{ url_for('home') }}"
+        class="navbar-brand-ai">
+
+        <div class="brand-ai-icon">
+
+            <i class="bi bi-robot"></i>
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <strong>
+
+                <span>AI</span>
+                Sentiment Analysis
+
+            </strong>
+
+
+            <small>
+                Understand. Analyze. Predict.
+            </small>
+
+        </div>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navbar-links">
+
+        <a
+            href="{{ url_for('home') }}"
+            class="nav-link-ai active">
+
+            <i class="bi bi-house"></i>
+
+            Home
+
+        </a>
+
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="nav-link-ai">
+
+            <i class="bi bi-grid-1x2"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a
+            href="{{ url_for('history') }}"
+            class="nav-link-ai">
+
+            <i class="bi bi-clock-history"></i>
+
+            History
+
+        </a>
+
+
+        <a
+            href="#"
+            class="nav-link-ai">
+
+            <i class="bi bi-person-circle"></i>
+
+            Profile
+
+        </a>
+
+
+        <a
+            href="{{ url_for('logout') }}"
+            class="logout-btn">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+
+    <!-- MOBILE MENU -->
+
+    <button
+        class="mobile-menu-btn"
+        id="mobileMenuBtn"
+        type="button">
+
+        <i class="bi bi-list"></i>
+
+    </button>
+
+</nav>
+
+
+<!-- =====================================================
+     MAIN CONTENT
+     ===================================================== -->
+
+<main class="main-container">
+
+
+    <!-- =================================================
+         HERO SECTION
+         ================================================= -->
+
+    <section class="hero-section">
+
+
+        <!-- 3D AI ORB -->
+
+        <div class="ai-orb-wrapper ai-float">
+
+            <div class="ai-orb">
+
+                <div class="ai-orb-core">
+
+                    <i class="bi bi-cpu"></i>
+
+                </div>
+
+                <span class="orb-ring ring-one"></span>
+
+                <span class="orb-ring ring-two"></span>
+
+                <span class="orb-ring ring-three"></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO BADGE -->
+
+        <div class="hero-badge">
+
+            <span class="status-dot"></span>
+
+            AI POWERED SENTIMENT ENGINE
+
+        </div>
+
+
+        <!-- HERO TITLE -->
+
+        <h1>
+
+            Understand the
+
+            <span>Emotion</span>
+
+            Behind Your Text
+
+        </h1>
+
+
+        <!-- HERO DESCRIPTION -->
+
+        <p>
+
+            Analyze your text using Machine Learning
+            and discover whether the sentiment is
+            Positive or Negative.
+
+        </p>
+
+    </section>
+
+
+    <!-- =================================================
+         ANALYSIS CARD
+         ================================================= -->
+
+    <section class="analysis-card ai-3d-card">
+
+
+        <!-- 3D CARD GLOW -->
+
+        <div class="card-3d-glow"></div>
+
+
+        <!-- CARD HEADER -->
+
+        <div class="card-heading">
+
+
+            <div class="heading-icon ai-icon-3d">
+
+                <i class="bi bi-stars"></i>
+
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Sentiment Analyzer
+                </h2>
+
+
+                <p>
+                    Enter your text and let AI analyze
+                    its sentiment.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PREDICTION FORM
+             ================================================= -->
+
+        <form
+            method="POST"
+            action="{{ url_for('predict') }}"
+            id="sentimentForm">
+
+
+            <!-- TEXTAREA -->
+
+            <div class="textarea-wrapper">
+
+
+                <div class="textarea-top">
+
+                    <label>
+
+                        <i class="bi bi-pencil-square"></i>
+
+                        Enter Your Text
+
+                    </label>
+
+
+                    <span id="charCounter">
+
+                        0 / 500
+
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    name="text"
+                    id="sentimentText"
+                    maxlength="500"
+                    placeholder="Type your sentence here... For example: The product quality is amazing and I really loved it!"
+                    required></textarea>
+
+
+                <!-- TEXTAREA FOOTER -->
+
+                <div class="textarea-footer">
+
+                    <span>
+
+                        <i class="bi bi-lightbulb"></i>
+
+                        Tip: Write a complete sentence
+                        for better analysis.
+
+                    </span>
+
+
+                    <button
+                        type="button"
+                        id="clearTextBtn"
+                        class="clear-btn">
+
+                        <i class="bi bi-x-circle"></i>
+
+                        Clear
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ANALYZE BUTTON
+                 ================================================= -->
+
+            <button
+                type="submit"
+                class="analyze-btn ai-button-3d"
+                id="analyzeBtn">
+
+
+                <span class="button-normal">
+
+                    <i class="bi bi-robot"></i>
+
+                    Analyze Sentiment
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </span>
+
+
+                <span class="button-loading">
+
+                    <span
+                        class="spinner-border spinner-border-sm">
+                    </span>
+
+                    AI is analyzing...
+
+                </span>
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- =================================================
+         RESULT SECTION
+         ================================================= -->
+
+    {% if prediction %}
+
+    <section
+        class="result-section"
+        id="resultSection">
+
+
+        <!-- RESULT TITLE -->
+
+        <div class="result-title">
+
+            <span class="result-line"></span>
+
+            <h2>
+                Analysis Result
+            </h2>
+
+            <span class="result-line"></span>
+
+        </div>
+
+
+        <!-- RESULT GRID -->
+
+        <div class="result-grid">
+
+
+            <!-- =================================================
+                 PREDICTION CARD
+                 ================================================= -->
+
+            <div
+                class="result-card prediction-card ai-3d-card
+                {% if prediction|lower == 'positive' %}
+                    positive
+                {% elif prediction|lower == 'negative' %}
+                    negative
+                {% else %}
+                    neutral
+                {% endif %}">
+
+
+                <div class="result-icon">
+
+                    {% if prediction|lower == 'positive' %}
+
+                        <i class="bi bi-emoji-smile-fill"></i>
+
+                    {% elif prediction|lower == 'negative' %}
+
+                        <i class="bi bi-emoji-frown-fill"></i>
+
+                    {% else %}
+
+                        <i class="bi bi-emoji-neutral-fill"></i>
+
+                    {% endif %}
+
+                </div>
+
+
+                <div class="result-info">
+
+                    <span class="result-label">
+
+                        PREDICTION
+
+                    </span>
+
+
+                    <h3>
+
+                        {{ prediction }}
+
+                    </h3>
+
+
+                    <p>
+
+                        {% if prediction|lower == 'positive' %}
+
+                            The text expresses a positive
+                            sentiment.
+
+                        {% elif prediction|lower == 'negative' %}
+
+                            The text expresses a negative
+                            sentiment.
+
+                        {% else %}
+
+                            The text appears to have a
+                            neutral sentiment.
+
+                        {% endif %}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CONFIDENCE CARD
+                 ================================================= -->
+
+            <div class="result-card confidence-card ai-3d-card">
+
+
+                <div class="confidence-icon">
+
+                    <i class="bi bi-speedometer2"></i>
+
+                </div>
+
+
+                <div class="confidence-info">
+
+                    <span class="result-label">
+
+                        MODEL CONFIDENCE
+
+                    </span>
+
+
+                    <!-- CONFIDENCE VALUE -->
+
+                    <h3>
+
+                        {{ "%.2f"|format(confidence|default(0)) }}%
+
+                    </h3>
+
+
+                    <!-- CONFIDENCE BAR -->
+
+                    <div class="confidence-bar">
+
+                        <div
+                            class="confidence-progress"
+                            id="confidenceProgress"
+                            data-confidence="{{ confidence|default(0) }}">
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        AI prediction confidence score
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- =================================================
+     SHARE PREDICTION
+     ================================================= -->
+
+<div class="share-prediction-section">
+
+    <form
+        method="POST"
+        action="{{ url_for('share_prediction') }}"
+        class="share-form">
+
+        <!-- Original Text -->
+        <input
+            type="hidden"
+            name="text"
+            value="{{ text|default('') }}">
+
+        <!-- Prediction -->
+        <input
+            type="hidden"
+            name="prediction"
+            value="{{ prediction|default('') }}">
+
+        <!-- Confidence -->
+        <input
+            type="hidden"
+            name="confidence"
+            value="{{ confidence|default(0) }}">
+
+        <button
+            type="submit"
+            class="share-btn">
+
+            <i class="bi bi-share-fill"></i>
+
+            Share Prediction
+
+            <i class="bi bi-arrow-up-right"></i>
+
+        </button>
+
+    </form>
+
+</div>
+
+
+        <!-- =================================================
+             RESULT FOOTER
+             ================================================= -->
+
+        <div class="result-footer">
+
+            <i class="bi bi-shield-check"></i>
+
+            Powered by Machine Learning
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- =================================================
+         FEATURES SECTION
+         ================================================= -->
+
+    <section class="features-section">
+
+
+        <!-- FEATURE 1 -->
+
+        <div class="feature-card ai-3d-card">
+
+
+            <div class="feature-icon blue">
+
+                <i class="bi bi-cpu"></i>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    AI Powered
+                </h4>
+
+
+                <p>
+
+                    Machine Learning based
+                    sentiment prediction.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FEATURE 2 -->
+
+        <div class="feature-card ai-3d-card">
+
+
+            <div class="feature-icon purple">
+
+                <i class="bi bi-lightning-charge"></i>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Fast Analysis
+                </h4>
+
+
+                <p>
+
+                    Get your sentiment result
+                    within seconds.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- FEATURE 3 -->
+
+        <div class="feature-card ai-3d-card">
+
+
+            <div class="feature-icon cyan">
+
+                <i class="bi bi-graph-up-arrow"></i>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Confidence Score
+                </h4>
+
+
+                <p>
+
+                    See how confident the model
+                    is in its prediction.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="ai-footer">
+
+
+    <div>
+
+        <i class="bi bi-robot"></i>
+
+        AI Sentiment Analysis
+
+    </div>
+
+
+    <span>
+
+        Intelligent sentiment analysis powered by
+        Machine Learning.
+
+    </span>
+
+
+    <small>
+
+        © 2026 AI Sentiment Analysis
+
+    </small>
+
+</footer>
+
+
+<!-- =====================================================
+     BOOTSTRAP JS
+     ===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- =====================================================
+     CONFIDENCE BAR JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const confidenceProgress =
+            document.getElementById(
+                "confidenceProgress"
+            );
+
+
+        if (confidenceProgress) {
+
+            let confidence =
+                parseFloat(
+                    confidenceProgress.dataset.confidence
+                );
+
+
+            if (isNaN(confidence)) {
+
+                confidence = 0;
+
+            }
+
+
+            /*
+             * Keep confidence
+             * between 0 and 100
+             */
+
+            confidence =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        confidence
+                    )
+                );
+
+
+            /*
+             * Animate confidence bar
+             */
+
+            setTimeout(
+                function () {
+
+                    confidenceProgress.style.width =
+                        confidence + "%";
+
+                },
+                150
+            );
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+<!-- =====================================================
+     INDEX JS
+     ===================================================== -->
+
+<script
+    src="{{ url_for('static', filename='js/index.js') }}">
+</script>
+
+
+<!-- =====================================================
+     3D AI JAVASCRIPT
+     ===================================================== -->
+
+<script
+    src="{{ url_for('static', filename='js/3d-ai.js') }}">
+</script>
+
+
+</body>
+
+</html>

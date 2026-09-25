@@ -1,0 +1,1377 @@
+/* =========================================================
+   AI SENTIMENT ANALYSIS
+   REGISTER PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0, 119, 255, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(180, 0, 255, 0.20),
+            transparent 30%
+        ),
+        #050816;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.ai-background {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -5;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #020617,
+            #071033,
+            #10072b,
+            #020617
+        );
+}
+
+
+.grid-background {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.25;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 140, 255, 0.15) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(160, 0, 255, 0.15) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    transform:
+        perspective(600px)
+        rotateX(60deg)
+        scale(1.5);
+
+    transform-origin: center bottom;
+}
+
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+.particles {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+}
+
+
+.particles span {
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #6ee7ff;
+
+    box-shadow:
+        0 0 10px #00c8ff,
+        0 0 20px #7c3cff;
+
+    animation:
+        particleFloat
+        8s
+        linear
+        infinite;
+}
+
+
+.particles span:nth-child(1) {
+    left: 8%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+
+.particles span:nth-child(2) {
+    left: 18%;
+    top: 70%;
+    animation-delay: 1s;
+}
+
+
+.particles span:nth-child(3) {
+    left: 30%;
+    top: 35%;
+    animation-delay: 2s;
+}
+
+
+.particles span:nth-child(4) {
+    left: 42%;
+    top: 80%;
+    animation-delay: 3s;
+}
+
+
+.particles span:nth-child(5) {
+    left: 52%;
+    top: 18%;
+    animation-delay: 4s;
+}
+
+
+.particles span:nth-child(6) {
+    left: 63%;
+    top: 65%;
+    animation-delay: 5s;
+}
+
+
+.particles span:nth-child(7) {
+    left: 72%;
+    top: 25%;
+    animation-delay: 1.5s;
+}
+
+
+.particles span:nth-child(8) {
+    left: 80%;
+    top: 75%;
+    animation-delay: 2.5s;
+}
+
+
+.particles span:nth-child(9) {
+    left: 90%;
+    top: 40%;
+    animation-delay: 3.5s;
+}
+
+
+.particles span:nth-child(10) {
+    left: 25%;
+    top: 90%;
+    animation-delay: 4.5s;
+}
+
+
+.particles span:nth-child(11) {
+    left: 58%;
+    top: 90%;
+    animation-delay: 5.5s;
+}
+
+
+.particles span:nth-child(12) {
+    left: 95%;
+    top: 15%;
+    animation-delay: 6s;
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 0.3;
+    }
+
+    50% {
+        transform:
+            translateY(-80px)
+            scale(1.7);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(-160px)
+            scale(0.5);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   MAIN WRAPPER
+   ========================================================= */
+
+.register-wrapper {
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 50px 30px;
+}
+
+
+.register-layout {
+    width: 100%;
+
+    max-width: 1250px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        0.85fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+/* =========================================================
+   LEFT AI SECTION
+   ========================================================= */
+
+.ai-section {
+    position: relative;
+
+    min-height: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 30px;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+.brand-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 18px;
+
+    font-size: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c6ff,
+            #7c3cff
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(0, 198, 255, 0.5);
+}
+
+
+.brand h1 {
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin: 0;
+}
+
+
+.brand h1 span {
+    background:
+        linear-gradient(
+            90deg,
+            #00d4ff,
+            #a855f7
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.brand p {
+    margin-top: 5px;
+
+    color: #9ca3af;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   AI BRAIN
+   ========================================================= */
+
+.ai-brain {
+    position: relative;
+
+    width: 300px;
+    height: 220px;
+
+    margin:
+        10px
+        auto
+        0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.brain-circle {
+    width: 125px;
+    height: 125px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 70px;
+
+    color: #b7f5ff;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 198, 255, 0.35),
+            rgba(120, 0, 255, 0.15),
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 30px #008cff,
+        0 0 70px
+        rgba(160, 0, 255, 0.6);
+
+    animation:
+        brainPulse
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes brainPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+
+.brain-ring {
+    position: absolute;
+
+    border: 1px solid rgba(
+        0,
+        190,
+        255,
+        0.35
+    );
+
+    border-radius: 50%;
+
+    animation:
+        ringRotate
+        8s
+        linear
+        infinite;
+}
+
+
+.ring-one {
+    width: 170px;
+    height: 170px;
+}
+
+
+.ring-two {
+    width: 220px;
+    height: 120px;
+
+    transform: rotate(45deg);
+}
+
+
+.ring-three {
+    width: 250px;
+    height: 180px;
+
+    transform: rotate(-35deg);
+}
+
+
+@keyframes ringRotate {
+
+    from {
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   AI BAG
+   ========================================================= */
+
+.ai-bag-scene {
+    position: relative;
+
+    width: 330px;
+    height: 260px;
+
+    margin:
+        -5px
+        auto
+        10px;
+
+    perspective: 900px;
+}
+
+
+.ai-bag {
+    position: absolute;
+
+    left: 50%;
+    top: 20px;
+
+    width: 190px;
+    height: 190px;
+
+    transform:
+        translateX(-50%)
+        rotateX(5deg)
+        rotateY(-8deg);
+
+    transform-style: preserve-3d;
+
+    animation:
+        bagFloat
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes bagFloat {
+
+    0%,
+    100% {
+        transform:
+            translateX(-50%)
+            translateY(0)
+            rotateX(5deg)
+            rotateY(-8deg);
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            translateY(-15px)
+            rotateX(5deg)
+            rotateY(8deg);
+    }
+}
+
+
+.bag-body {
+    position: absolute;
+
+    left: 20px;
+    top: 35px;
+
+    width: 150px;
+    height: 145px;
+
+    border-radius:
+        28px
+        28px
+        25px
+        25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #159eff,
+            #1247b8 55%,
+            #080f45
+        );
+
+    border:
+        2px solid
+        rgba(90, 200, 255, 0.5);
+
+    box-shadow:
+        inset 8px 0 20px
+        rgba(255, 255, 255, 0.12),
+        0 20px 40px
+        rgba(0, 0, 0, 0.5),
+        0 0 35px
+        rgba(0, 130, 255, 0.45);
+
+    transform: translateZ(10px);
+}
+
+
+.bag-handle {
+    position: absolute;
+
+    left: 65px;
+    top: 12px;
+
+    width: 60px;
+    height: 45px;
+
+    border:
+        7px solid
+        #172554;
+
+    border-bottom: 0;
+
+    border-radius:
+        35px
+        35px
+        0
+        0;
+
+    z-index: 2;
+}
+
+
+.bag-glow {
+    position: absolute;
+
+    left: 35px;
+    top: 30px;
+
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 220, 255, 0.5),
+            rgba(120, 0, 255, 0.45)
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.4);
+
+    box-shadow:
+        0 0 30px
+        rgba(0, 200, 255, 0.6);
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    color: white;
+}
+
+
+.bag-pocket {
+    position: absolute;
+
+    left: 45px;
+    bottom: 10px;
+
+    width: 100px;
+    height: 45px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0c5fe8,
+            #17105c
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.25);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-evenly;
+}
+
+
+.bag-pocket span {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #70eaff;
+
+    box-shadow:
+        0 0 10px #00c6ff;
+}
+
+
+.bag-strap-left,
+.bag-strap-right {
+    position: absolute;
+
+    top: 60px;
+
+    width: 20px;
+    height: 100px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            #172554,
+            #0f172a
+        );
+}
+
+
+.bag-strap-left {
+    left: 4px;
+
+    transform: rotate(8deg);
+}
+
+
+.bag-strap-right {
+    right: 4px;
+
+    transform: rotate(-8deg);
+}
+
+
+.bag-platform {
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 15px;
+
+    width: 270px;
+    height: 35px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(0, 210, 255, 0.8),
+            rgba(120, 0, 255, 0.3),
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(0, 210, 255, 0.6);
+}
+
+
+/* =========================================================
+   AI DESCRIPTION
+   ========================================================= */
+
+.ai-description {
+    max-width: 520px;
+
+    margin:
+        0
+        auto;
+
+    text-align: center;
+}
+
+
+.ai-description h2 {
+    font-size: 24px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #22d3ee,
+            #c084fc
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.ai-description p {
+    color: #9ca3af;
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   REGISTER SECTION
+   ========================================================= */
+
+.register-section {
+    display: flex;
+
+    justify-content: center;
+}
+
+
+.register-card {
+    width: 100%;
+
+    max-width: 500px;
+
+    padding: 42px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.92),
+            rgba(15, 10, 45, 0.86)
+        );
+
+    border:
+        1px solid
+        rgba(100, 180, 255, 0.35);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.55),
+        0 0 50px
+        rgba(90, 0, 255, 0.15);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+}
+
+
+/* =========================================================
+   REGISTER ICON
+   ========================================================= */
+
+.register-icon {
+    width: 80px;
+    height: 80px;
+
+    margin:
+        0
+        auto
+        20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 38px;
+
+    color: #ffffff;
+
+    border:
+        2px solid
+        #7c3cff;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(168, 85, 247, 0.35),
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(124, 58, 237, 0.55);
+}
+
+
+.register-card h2 {
+    text-align: center;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.register-subtitle {
+    text-align: center;
+
+    color: #9ca3af;
+
+    margin-bottom: 20px;
+}
+
+
+.gradient-line {
+    width: 80px;
+    height: 4px;
+
+    margin:
+        0
+        auto
+        30px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00c6ff,
+            #7c3cff,
+            #ec4899
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(124, 58, 237, 0.6);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #e5e7eb;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.form-group label i {
+    color: #60a5fa;
+
+    margin-right: 6px;
+}
+
+
+.input-box {
+    position: relative;
+}
+
+
+.input-icon {
+    position: absolute;
+
+    left: 17px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #7dd3fc;
+
+    z-index: 2;
+}
+
+
+.input-box input {
+    width: 100%;
+
+    height: 55px;
+
+    padding:
+        0
+        50px
+        0
+        48px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.3);
+
+    outline: none;
+
+    color: #ffffff;
+
+    background:
+        rgba(15, 23, 42, 0.75);
+
+    transition:
+        0.3s ease;
+}
+
+
+.input-box input::placeholder {
+    color: #64748b;
+}
+
+
+.input-box input:focus {
+    border-color: #38bdf8;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(56, 189, 248, 0.12),
+        0 0 20px
+        rgba(56, 189, 248, 0.15);
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+   ========================================================= */
+
+.password-toggle {
+    position: absolute;
+
+    right: 8px;
+    top: 50%;
+
+    width: 42px;
+    height: 42px;
+
+    transform:
+        translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #94a3b8;
+
+    cursor: pointer;
+
+    border-radius: 8px;
+
+    transition:
+        0.2s ease;
+}
+
+
+.password-toggle:hover {
+    color: #60a5fa;
+
+    background:
+        rgba(59, 130, 246, 0.1);
+}
+
+
+/* =========================================================
+   PASSWORD MESSAGE
+   ========================================================= */
+
+.password-message {
+    min-height: 22px;
+
+    margin:
+        -5px
+        0
+        12px;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   REGISTER BUTTON
+   ========================================================= */
+
+.register-btn {
+    width: 100%;
+
+    height: 56px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed,
+            #c026d3
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(124, 58, 237, 0.3);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.register-btn:hover {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 15px 40px
+        rgba(124, 58, 237, 0.5);
+}
+
+
+.register-btn:active {
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   LOGIN LINK
+   ========================================================= */
+
+.login-link {
+    margin-top: 25px;
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+.login-link a {
+    color: #60a5fa;
+
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.login-link a:hover {
+    color: #c084fc;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.security-text {
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid
+        rgba(148, 163, 184, 0.15);
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.security-text i {
+    color: #22c55e;
+
+    margin-right: 5px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .register-layout {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+        max-width: 650px;
+    }
+
+
+    .ai-section {
+        min-height: auto;
+
+        padding: 10px;
+
+        text-align: center;
+    }
+
+
+    .brand {
+        justify-content: center;
+    }
+
+
+    .ai-description {
+        display: none;
+    }
+
+
+    .ai-brain {
+        height: 170px;
+    }
+
+
+    .ai-bag-scene {
+        margin-top: -15px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .register-wrapper {
+        padding:
+            25px
+            15px;
+    }
+
+
+    .register-layout {
+        gap: 10px;
+    }
+
+
+    .ai-section {
+        padding: 5px;
+    }
+
+
+    .brand h1 {
+        font-size: 21px;
+    }
+
+
+    .brand-icon {
+        width: 48px;
+        height: 48px;
+
+        font-size: 24px;
+    }
+
+
+    .ai-brain {
+        transform:
+            scale(0.75);
+
+        margin-top: -15px;
+
+        margin-bottom: -20px;
+    }
+
+
+    .ai-bag-scene {
+        transform:
+            scale(0.8);
+
+        margin-top: -15px;
+
+        margin-bottom: -20px;
+    }
+
+
+    .register-card {
+        padding: 28px 20px;
+
+        border-radius: 22px;
+    }
+
+
+    .register-card h2 {
+        font-size: 27px;
+    }
+
+
+    .register-icon {
+        width: 65px;
+        height: 65px;
+
+        font-size: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .brand h1 {
+        font-size: 18px;
+    }
+
+
+    .register-card {
+        padding: 24px 16px;
+    }
+
+
+    .input-box input {
+        height: 52px;
+    }
+
+
+    .register-btn {
+        height: 52px;
+    }
+
+}

@@ -1,0 +1,4411 @@
+/* =====================================================
+   AI SENTIMENT ANALYSIS
+   PROFESSIONAL 3D LOGIN PAGE
+   ===================================================== */
+
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+
+    min-height: 100%;
+
+}
+
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        #020617;
+
+    color: white;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   AI BACKGROUND
+   ===================================================== */
+
+.ai-background {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -5;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(37, 99, 235, 0.28),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(168, 85, 247, 0.25),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #020617,
+            #07112f,
+            #10052e
+        );
+
+}
+
+
+/* =====================================================
+   GRID
+   ===================================================== */
+
+.grid {
+
+    position: absolute;
+
+    inset: -50%;
+
+    background-image:
+
+        linear-gradient(
+            rgba(59,130,246,0.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(168,85,247,0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+
+    transform:
+        perspective(500px)
+        rotateX(60deg);
+
+    animation:
+        gridMove 15s linear infinite;
+
+}
+
+
+@keyframes gridMove {
+
+    from {
+
+        transform:
+            perspective(500px)
+            rotateX(60deg)
+            translateY(0);
+
+    }
+
+    to {
+
+        transform:
+            perspective(500px)
+            rotateX(60deg)
+            translateY(60px);
+
+    }
+
+}
+
+
+/* =====================================================
+   PARTICLES
+   ===================================================== */
+
+.particles span {
+
+    position: absolute;
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #60a5fa;
+
+    box-shadow:
+        0 0 10px #60a5fa,
+        0 0 20px #a855f7;
+
+    animation:
+        particleFloat 8s linear infinite;
+
+}
+
+
+/* particle positions */
+
+.particles span:nth-child(1) {
+    left: 8%;
+    top: 20%;
+}
+
+.particles span:nth-child(2) {
+    left: 18%;
+    top: 70%;
+}
+
+.particles span:nth-child(3) {
+    left: 30%;
+    top: 15%;
+}
+
+.particles span:nth-child(4) {
+    left: 42%;
+    top: 80%;
+}
+
+.particles span:nth-child(5) {
+    left: 55%;
+    top: 25%;
+}
+
+.particles span:nth-child(6) {
+    left: 65%;
+    top: 65%;
+}
+
+.particles span:nth-child(7) {
+    left: 75%;
+    top: 15%;
+}
+
+.particles span:nth-child(8) {
+    left: 85%;
+    top: 45%;
+}
+
+.particles span:nth-child(9) {
+    left: 92%;
+    top: 75%;
+}
+
+.particles span:nth-child(10) {
+    left: 50%;
+    top: 50%;
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 0.3;
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-35px)
+            scale(1.5);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity: 0.3;
+
+    }
+
+}
+
+
+/* =====================================================
+   MAIN PAGE
+   ===================================================== */
+
+.login-page {
+
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 520px;
+
+    gap: 50px;
+
+    padding:
+        40px 7%;
+
+    align-items: center;
+
+}
+
+
+/* =====================================================
+   LEFT AI SECTION
+   ===================================================== */
+
+.ai-section {
+
+    min-height: 650px;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+
+/* =====================================================
+   BRAND
+   ===================================================== */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 35px;
+
+}
+
+
+.brand-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 20px;
+
+    font-size: 30px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #a855f7
+        );
+
+    box-shadow:
+
+        0 0 20px
+        rgba(59,130,246,0.6),
+
+        0 0 40px
+        rgba(168,85,247,0.35);
+
+}
+
+
+.brand h1 {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin: 0;
+
+}
+
+
+.brand h1 span {
+
+    color: #a855f7;
+
+}
+
+
+.brand p {
+
+    margin: 5px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 16px;
+
+}
+
+
+/* =====================================================
+   AI DESCRIPTION
+   ===================================================== */
+
+.ai-description {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 290px;
+
+}
+
+
+.ai-description h3 {
+
+    color: #38bdf8;
+
+    font-size: 22px;
+
+    line-height: 1.2;
+
+}
+
+
+.ai-description p {
+
+    color: #94a3b8;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   3D AI SCENE
+   ===================================================== */
+
+.ai-3d-scene {
+
+    width: 100%;
+
+    height: 420px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    perspective: 1200px;
+
+}
+
+
+/* =====================================================
+   AI BAG
+   ===================================================== */
+
+.ai-bag {
+
+    width: 180px;
+
+    height: 215px;
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    animation:
+        bagFloat 4s ease-in-out infinite,
+        bagRotate 8s ease-in-out infinite;
+
+    transition:
+        transform 0.15s ease-out;
+
+}
+
+
+/* =====================================================
+   BAG BODY
+   ===================================================== */
+
+.bag-body {
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 205px;
+
+    top: 10px;
+
+    left: 0;
+
+    border-radius:
+        35px 35px 28px 28px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #0ea5e9 45%,
+            #111827
+        );
+
+    transform:
+        translateZ(40px);
+
+    box-shadow:
+
+        inset
+        10px 10px 20px
+        rgba(255,255,255,0.18),
+
+        inset
+        -15px -15px 25px
+        rgba(0,0,0,0.4),
+
+        0 30px 60px
+        rgba(37,99,235,0.45);
+
+}
+
+
+/* =====================================================
+   BAG TOP
+   ===================================================== */
+
+.bag-top {
+
+    position: absolute;
+
+    width: 135px;
+
+    height: 40px;
+
+    left: 22px;
+
+    top: -15px;
+
+    border-radius:
+        35px 35px 12px 12px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #38bdf8,
+            #2563eb
+        );
+
+    transform:
+        translateZ(25px)
+        rotateX(10deg);
+
+}
+
+
+/* =====================================================
+   BAG POCKET
+   ===================================================== */
+
+.bag-pocket {
+
+    position: absolute;
+
+    width: 115px;
+
+    height: 75px;
+
+    left: 32px;
+
+    bottom: 22px;
+
+    border-radius: 18px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #3730a3,
+            #1e40af
+        );
+
+    border:
+        2px solid
+        rgba(255,255,255,0.15);
+
+    transform:
+        translateZ(58px);
+
+    box-shadow:
+
+        inset
+        4px 4px 10px
+        rgba(255,255,255,0.12),
+
+        0 10px 20px
+        rgba(0,0,0,0.3);
+
+}
+
+
+/* =====================================================
+   ZIPPER
+   ===================================================== */
+
+.bag-zipper {
+
+    position: absolute;
+
+    width: 75px;
+
+    height: 5px;
+
+    left: 52px;
+
+    bottom: 82px;
+
+    border-radius: 10px;
+
+    background: #e2e8f0;
+
+    transform:
+        translateZ(65px);
+
+}
+
+
+.bag-zipper::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 12px;
+
+    height: 12px;
+
+    right: -5px;
+
+    top: -4px;
+
+    border-radius: 50%;
+
+    background: #facc15;
+
+    box-shadow:
+        0 0 10px #facc15;
+
+}
+
+
+/* =====================================================
+   STRAPS
+   ===================================================== */
+
+.bag-strap-left,
+.bag-strap-right {
+
+    position: absolute;
+
+    width: 35px;
+
+    height: 145px;
+
+    top: 40px;
+
+    border-radius: 25px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #111827,
+            #475569
+        );
+
+    transform:
+        translateZ(-5px);
+
+    box-shadow:
+        0 10px 15px
+        rgba(0,0,0,0.3);
+
+}
+
+
+.bag-strap-left {
+
+    left: -22px;
+
+    rotate: -8deg;
+
+}
+
+
+.bag-strap-right {
+
+    right: -22px;
+
+    rotate: 8deg;
+
+}
+
+
+/* =====================================================
+   HANDLE
+   ===================================================== */
+
+.bag-handle {
+
+    position: absolute;
+
+    width: 75px;
+
+    height: 50px;
+
+    left: 52px;
+
+    top: -55px;
+
+    border:
+        10px solid #1e293b;
+
+    border-bottom: none;
+
+    border-radius:
+        50px 50px 0 0;
+
+    transform:
+        translateZ(10px);
+
+}
+
+
+/* =====================================================
+   AI LOGO
+   ===================================================== */
+
+.ai-logo {
+
+    position: absolute;
+
+    width: 60px;
+
+    height: 60px;
+
+    left: 60px;
+
+    top: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            white,
+            #93c5fd 45%,
+            #2563eb 75%
+        );
+
+    color: #0f172a;
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    transform:
+        translateZ(70px);
+
+    box-shadow:
+
+        0 0 20px #60a5fa,
+
+        0 0 45px
+        rgba(59,130,246,0.7);
+
+    animation:
+        aiGlow 2s ease-in-out infinite alternate;
+
+}
+
+
+/* =====================================================
+   BAG FLOAT
+   ===================================================== */
+
+@keyframes bagFloat {
+
+    0% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-20px);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   BAG ROTATE
+   ===================================================== */
+
+@keyframes bagRotate {
+
+    0% {
+
+        rotate: y -5deg;
+
+    }
+
+    50% {
+
+        rotate: y 5deg;
+
+    }
+
+    100% {
+
+        rotate: y -5deg;
+
+    }
+
+}
+
+
+/* =====================================================
+   AI GLOW
+   ===================================================== */
+
+@keyframes aiGlow {
+
+    from {
+
+        box-shadow:
+
+            0 0 10px #60a5fa,
+
+            0 0 25px
+            rgba(59,130,246,0.5);
+
+    }
+
+    to {
+
+        box-shadow:
+
+            0 0 25px #93c5fd,
+
+            0 0 55px
+            rgba(168,85,247,0.8);
+
+    }
+
+}
+
+
+/* =====================================================
+   BAG SHADOW
+   ===================================================== */
+
+.bag-shadow {
+
+    position: absolute;
+
+    width: 200px;
+
+    height: 35px;
+
+    bottom: 50px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        rgba(0,0,0,0.45);
+
+    filter:
+        blur(15px);
+
+    animation:
+        shadowFloat 4s ease-in-out infinite;
+
+}
+
+
+@keyframes shadowFloat {
+
+    0% {
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+        opacity: .5;
+
+    }
+
+    50% {
+
+        transform:
+            translateX(-50%)
+            scale(.7);
+
+        opacity: .2;
+
+    }
+
+    100% {
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+        opacity: .5;
+
+    }
+
+}
+
+
+/* =====================================================
+   AI TAG
+   ===================================================== */
+
+.ai-tag {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}
+
+
+.ai-tag .dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 12px #22c55e;
+
+}
+
+
+/* =====================================================
+   LOGIN SECTION
+   ===================================================== */
+
+.login-section {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+/* =====================================================
+   LOGIN CARD
+   ===================================================== */
+
+.login-card {
+
+    width: 100%;
+
+    max-width: 500px;
+
+    padding: 42px;
+
+    border-radius: 28px;
+
+    background:
+        rgba(8,15,40,0.78);
+
+    border:
+        1px solid
+        rgba(96,165,250,0.35);
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+
+        0 30px 80px
+        rgba(0,0,0,0.5),
+
+        0 0 50px
+        rgba(37,99,235,0.12);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+}
+
+
+/* =====================================================
+   LOGIN ICON
+   ===================================================== */
+
+.login-icon {
+
+    width: 110px;
+
+    height: 110px;
+
+    margin:
+        0 auto 25px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 45px;
+
+    color: #a855f7;
+
+    border:
+        2px solid #7c3aed;
+
+    background:
+        rgba(59,130,246,0.08);
+
+    box-shadow:
+
+        0 0 30px
+        rgba(168,85,247,0.35);
+
+}
+
+
+/* =====================================================
+   LOGIN TITLE
+   ===================================================== */
+
+.login-card h2 {
+
+    text-align: center;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+
+.login-subtitle {
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =====================================================
+   NEON LINE
+   ===================================================== */
+
+.neon-line {
+
+    width: 65px;
+
+    height: 4px;
+
+    margin:
+        0 auto 35px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #a855f7
+        );
+
+    box-shadow:
+        0 0 15px #a855f7;
+
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+.form-group {
+
+    margin-bottom: 22px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #e2e8f0;
+
+}
+
+
+.form-group label i {
+
+    color: #60a5fa;
+
+    margin-right: 7px;
+
+}
+
+
+/* =====================================================
+   INPUT BOX
+   ===================================================== */
+
+.input-box {
+
+    position: relative;
+
+}
+
+
+.input-box input {
+
+    width: 100%;
+
+    height: 58px;
+
+    padding:
+        0 50px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        rgba(148,163,184,0.25);
+
+    background:
+        rgba(15,23,42,0.65);
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: .3s;
+
+}
+
+
+.input-box input::placeholder {
+
+    color: #64748b;
+
+}
+
+
+.input-box input:focus {
+
+    border-color:
+        #6366f1;
+
+    box-shadow:
+        0 0 20px
+        rgba(99,102,241,0.2);
+
+}
+
+
+.input-icon {
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #94a3b8;
+
+    z-index: 2;
+
+}
+
+
+/* =====================================================
+   PASSWORD BUTTON
+   ===================================================== */
+
+.password-toggle {
+
+    position: absolute;
+
+    right: 15px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: #94a3b8;
+
+    font-size: 19px;
+
+}
+
+
+.password-toggle:hover {
+
+    color: #60a5fa;
+
+}
+
+
+/* =====================================================
+   OPTIONS
+   ===================================================== */
+
+.login-options {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin:
+        5px 0 25px;
+
+    font-size: 14px;
+
+}
+
+
+.remember {
+
+    display: flex;
+
+    gap: 8px;
+
+    align-items: center;
+
+    color: #cbd5e1;
+
+}
+
+
+.remember input {
+
+    width: 17px;
+
+    height: 17px;
+
+    accent-color: #8b5cf6;
+
+}
+
+
+.login-options a {
+
+    color: #818cf8;
+
+    text-decoration: none;
+
+}
+
+
+.login-options a:hover {
+
+    color: #c084fc;
+
+}
+
+
+/* =====================================================
+   LOGIN BUTTON
+   ===================================================== */
+
+.login-button {
+
+    width: 100%;
+
+    height: 60px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #7c3aed,
+            #c026d3
+        );
+
+    box-shadow:
+
+        0 12px 30px
+        rgba(124,58,237,0.3);
+
+    transition: .3s;
+
+}
+
+
+.login-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+
+        0 18px 40px
+        rgba(168,85,247,0.4);
+
+}
+
+
+/* =====================================================
+   DIVIDER
+   ===================================================== */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin:
+        30px 0 20px;
+
+}
+
+
+.divider span {
+
+    height: 1px;
+
+    flex: 1;
+
+    background:
+        rgba(148,163,184,0.2);
+
+}
+
+
+.divider p {
+
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   SOCIAL
+   ===================================================== */
+
+.social-login {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+}
+
+
+.social-login button {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        rgba(148,163,184,0.2);
+
+    background:
+        rgba(15,23,42,0.6);
+
+    color: #e2e8f0;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+.social-login button:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        #6366f1;
+
+    color: #a78bfa;
+
+}
+
+
+/* =====================================================
+   REGISTER
+   ===================================================== */
+
+.register-text {
+
+    text-align: center;
+
+    color: #94a3b8;
+
+    margin:
+        25px 0 0;
+
+    font-size: 14px;
+
+}
+
+
+.register-text a {
+
+    color: #818cf8;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+}
+
+
+.register-text a:hover {
+
+    color: #c084fc;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 1100px) {
+
+    .login-page {
+
+        grid-template-columns:
+            1fr 450px;
+
+        gap: 30px;
+
+        padding:
+            30px 4%;
+
+    }
+
+    .brand h1 {
+
+        font-size: 28px;
+
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .login-page {
+
+        grid-template-columns: 1fr;
+
+        padding:
+            30px 20px;
+
+    }
+
+
+    .ai-section {
+
+        min-height: auto;
+
+    }
+
+
+    .ai-description {
+
+        display: none;
+
+    }
+
+
+    .ai-3d-scene {
+
+        height: 300px;
+
+    }
+
+
+    .ai-bag {
+
+        transform:
+            scale(.8);
+
+    }
+
+
+    .login-section {
+
+        width: 100%;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .brand {
+
+        justify-content: center;
+
+    }
+
+
+    .brand h1 {
+
+        font-size: 23px;
+
+    }
+
+
+    .brand-icon {
+
+        width: 50px;
+
+        height: 50px;
+
+        font-size: 24px;
+
+    }
+
+
+    .login-card {
+
+        padding: 28px 20px;
+
+        border-radius: 22px;
+
+    }
+
+
+    .login-card h2 {
+
+        font-size: 28px;
+
+    }
+
+
+    .login-icon {
+
+        width: 85px;
+
+        height: 85px;
+
+        font-size: 35px;
+
+    }
+
+
+    .login-options {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+
+    }
+
+}
+
+
+/* =====================================================
+   EXISTING LOGIN / REGISTER 3D CODE
+   DO NOT DELETE
+   ===================================================== */
+
+
+/* =====================================================
+   HOME + DASHBOARD + HISTORY 3D ADDITIONAL DESIGN
+   ===================================================== */
+
+.ai-page {
+    position: relative;
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(0, 217, 255, 0.12),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(139, 92, 246, 0.15),
+            transparent 30%
+        ),
+        #050816;
+}
+
+
+/* =====================================================
+   HOME PAGE 3D AI ANIMATION
+   ===================================================== */
+
+
+/* =====================================================
+   3D BACKGROUND
+   ===================================================== */
+
+.ai-3d-background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: -3;
+
+}
+
+
+/* =====================================================
+   GLOWING BACKGROUND ORBS
+   ===================================================== */
+
+.ai-glow {
+
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    opacity: 0.35;
+
+    animation: aiGlowMove 8s ease-in-out infinite;
+
+}
+
+
+.glow-one {
+
+    background: #00d9ff;
+
+    top: 10%;
+
+    left: 10%;
+
+}
+
+
+.glow-two {
+
+    background: #7c3aed;
+
+    top: 40%;
+
+    right: 5%;
+
+    animation-delay: 2s;
+
+}
+
+
+.glow-three {
+
+    background: #ec4899;
+
+    bottom: 0;
+
+    left: 40%;
+
+    animation-delay: 4s;
+
+}
+
+
+@keyframes aiGlowMove {
+
+    0%,
+    100% {
+
+        transform:
+            translate(0, 0)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translate(40px, -30px)
+            scale(1.2);
+
+    }
+
+}
+
+
+/* =====================================================
+   FLOATING PARTICLES
+   ===================================================== */
+
+.ai-particles span {
+
+    position: absolute;
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #00d9ff;
+
+    box-shadow:
+        0 0 10px #00d9ff,
+        0 0 20px #00d9ff;
+
+    animation: particleFloat 8s linear infinite;
+
+}
+
+
+.ai-particles span:nth-child(1) {
+    left: 5%;
+    top: 90%;
+    animation-delay: 0s;
+}
+
+.ai-particles span:nth-child(2) {
+    left: 15%;
+    top: 70%;
+    animation-delay: 1s;
+}
+
+.ai-particles span:nth-child(3) {
+    left: 25%;
+    top: 85%;
+    animation-delay: 2s;
+}
+
+.ai-particles span:nth-child(4) {
+    left: 35%;
+    top: 60%;
+    animation-delay: 3s;
+}
+
+.ai-particles span:nth-child(5) {
+    left: 45%;
+    top: 90%;
+    animation-delay: 4s;
+}
+
+.ai-particles span:nth-child(6) {
+    left: 55%;
+    top: 70%;
+    animation-delay: 5s;
+}
+
+.ai-particles span:nth-child(7) {
+    left: 65%;
+    top: 85%;
+    animation-delay: 1.5s;
+}
+
+.ai-particles span:nth-child(8) {
+    left: 75%;
+    top: 60%;
+    animation-delay: 2.5s;
+}
+
+.ai-particles span:nth-child(9) {
+    left: 85%;
+    top: 80%;
+    animation-delay: 3.5s;
+}
+
+.ai-particles span:nth-child(10) {
+    left: 95%;
+    top: 65%;
+    animation-delay: 4.5s;
+}
+
+.ai-particles span:nth-child(11) {
+    left: 30%;
+    top: 30%;
+    animation-delay: 5.5s;
+}
+
+.ai-particles span:nth-child(12) {
+    left: 70%;
+    top: 25%;
+    animation-delay: 6s;
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+
+        transform:
+            translateY(0)
+            scale(0);
+
+        opacity: 0;
+
+    }
+
+    20% {
+
+        opacity: 1;
+
+    }
+
+    80% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translateY(-500px)
+            scale(1.5);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   3D CARD
+   ===================================================== */
+
+.ai-3d-card {
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    perspective: 1000px;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+    will-change: transform;
+
+}
+
+
+.ai-3d-card:hover {
+
+    box-shadow:
+
+        0 20px 45px rgba(0, 0, 0, 0.35),
+
+        0 0 25px rgba(0, 217, 255, 0.20);
+
+}
+
+
+/* =====================================================
+   CARD GLOW
+   ===================================================== */
+
+.card-3d-glow {
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    top: -80px;
+
+    right: -80px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(0, 217, 255, 0.25),
+            transparent 70%
+        );
+
+    pointer-events: none;
+
+    filter: blur(5px);
+
+}
+
+
+/* =====================================================
+   3D FLOATING ANIMATION
+   ===================================================== */
+
+.ai-float {
+
+    animation:
+        aiFloating 4s ease-in-out infinite;
+
+}
+
+
+@keyframes aiFloating {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-12px);
+
+    }
+
+}
+
+
+/* =====================================================
+   AI ORB
+   ===================================================== */
+
+.ai-orb-wrapper {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+
+}
+
+
+.ai-orb {
+
+    position: relative;
+
+    width: 110px;
+
+    height: 110px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #00d9ff 15%,
+            #2563eb 45%,
+            #111827 75%
+        );
+
+    box-shadow:
+
+        0 0 20px #00d9ff,
+
+        0 0 45px rgba(0, 217, 255, 0.5),
+
+        inset 0 0 25px rgba(255, 255, 255, 0.25);
+
+    transform-style: preserve-3d;
+
+    animation:
+        orbRotate 8s linear infinite;
+
+}
+
+
+.ai-orb-core {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        rgba(5, 8, 22, 0.75);
+
+    color: #00d9ff;
+
+    font-size: 27px;
+
+    box-shadow:
+
+        0 0 20px #00d9ff;
+
+}
+
+
+@keyframes orbRotate {
+
+    0% {
+
+        transform:
+            rotateY(0deg)
+            rotateX(0deg);
+
+    }
+
+    50% {
+
+        transform:
+            rotateY(180deg)
+            rotateX(15deg);
+
+    }
+
+    100% {
+
+        transform:
+            rotateY(360deg)
+            rotateX(0deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   ORB RINGS
+   ===================================================== */
+
+.orb-ring {
+
+    position: absolute;
+
+    border: 2px solid rgba(0, 217, 255, 0.55);
+
+    border-radius: 50%;
+
+}
+
+
+.ring-one {
+
+    width: 140px;
+
+    height: 40px;
+
+    transform:
+        rotateX(70deg);
+
+    animation:
+        ringRotate 4s linear infinite;
+
+}
+
+
+.ring-two {
+
+    width: 140px;
+
+    height: 40px;
+
+    transform:
+        rotateY(70deg);
+
+    animation:
+        ringRotate 5s linear infinite reverse;
+
+}
+
+
+.ring-three {
+
+    width: 125px;
+
+    height: 125px;
+
+    border-color:
+        rgba(139, 92, 246, 0.45);
+
+    animation:
+        ringRotate 7s linear infinite;
+
+}
+
+
+@keyframes ringRotate {
+
+    from {
+
+        transform:
+            rotateZ(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotateZ(360deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   3D AI ICON
+   ===================================================== */
+
+.ai-icon-3d {
+
+    transform-style: preserve-3d;
+
+    animation:
+        iconPulse 2.5s ease-in-out infinite;
+
+}
+
+
+@keyframes iconPulse {
+
+    0%,
+    100% {
+
+        transform:
+            translateZ(0)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translateZ(15px)
+            scale(1.08);
+
+    }
+
+}
+
+
+/* =====================================================
+   3D BUTTON
+   ===================================================== */
+
+.ai-button-3d {
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.ai-button-3d:hover {
+
+    transform:
+        translateY(-5px)
+        translateZ(10px)
+        scale(1.02);
+
+    box-shadow:
+
+        0 12px 25px rgba(0, 0, 0, 0.3),
+
+        0 0 30px rgba(0, 217, 255, 0.35);
+
+}
+
+
+/* =====================================================
+   RESULT 3D
+   ===================================================== */
+
+.result-card.ai-3d-card {
+
+    transform-style: preserve-3d;
+
+}
+
+
+.result-card.ai-3d-card .result-icon,
+.result-card.ai-3d-card .confidence-icon {
+
+    transform:
+        translateZ(20px);
+
+}
+
+
+.result-card.ai-3d-card h3 {
+
+    transform:
+        translateZ(15px);
+
+}
+
+
+/* =====================================================
+   FEATURE CARD
+   ===================================================== */
+
+.feature-card.ai-3d-card {
+
+    transform-style: preserve-3d;
+
+}
+
+
+.feature-card.ai-3d-card .feature-icon {
+
+    transform:
+        translateZ(20px);
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.feature-card.ai-3d-card:hover .feature-icon {
+
+    transform:
+        translateZ(35px)
+        rotateY(10deg)
+        scale(1.08);
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .ai-orb {
+
+        width: 85px;
+
+        height: 85px;
+
+    }
+
+
+    .ring-one,
+    .ring-two {
+
+        width: 110px;
+
+        height: 35px;
+
+    }
+
+
+    .ring-three {
+
+        width: 100px;
+
+        height: 100px;
+
+    }
+
+}
+
+/* =====================================================
+   DASHBOARD + HISTORY UNIQUE 3D SYSTEM
+   ===================================================== */
+
+
+/* =====================================================
+   DASHBOARD 3D DATA CARD
+   ===================================================== */
+
+.dashboard-3d-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+
+    perspective: 1200px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.94),
+            rgba(5, 8, 22, 0.97)
+        );
+
+    border: 1px solid rgba(0, 217, 255, 0.25);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35),
+        inset 0 0 25px rgba(0, 217, 255, 0.03);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+/* holographic light */
+
+.dashboard-3d-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+    height: 220px;
+
+    top: -100px;
+    right: -100px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 217, 255, 0.22),
+            transparent 70%
+        );
+
+    filter: blur(8px);
+
+    pointer-events: none;
+
+}
+
+
+/* scanning line */
+
+.dashboard-3d-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    height: 2px;
+
+    top: -10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #00d9ff,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px #00d9ff;
+
+    animation:
+        dashboardScan 5s linear infinite;
+
+    opacity: 0.6;
+
+}
+
+
+@keyframes dashboardScan {
+
+    0% {
+        top: -10px;
+    }
+
+    100% {
+        top: 110%;
+    }
+
+}
+
+
+/* =====================================================
+   DASHBOARD STAT CARD
+   ===================================================== */
+
+.dashboard-stat-3d {
+
+    min-height: 170px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 25px;
+
+}
+
+
+.dashboard-stat-icon {
+
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    font-size: 27px;
+
+    transform:
+        translateZ(35px);
+
+    box-shadow:
+        0 0 25px rgba(0, 217, 255, 0.20);
+
+}
+
+
+.dashboard-stat-number {
+
+    font-size: 42px;
+
+    font-weight: 800;
+
+    transform:
+        translateZ(45px);
+
+}
+
+
+.dashboard-stat-title {
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    opacity: 0.7;
+
+}
+
+
+/* =====================================================
+   DASHBOARD CHART HOLOGRAM
+   ===================================================== */
+
+.dashboard-chart-3d {
+
+    position: relative;
+
+    min-height: 350px;
+
+    transform-style: preserve-3d;
+
+}
+
+
+.dashboard-chart-3d .chart-inner {
+
+    transform:
+        translateZ(25px);
+
+}
+
+
+.dashboard-chart-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.dashboard-chart-title i {
+
+    color: #00d9ff;
+
+    text-shadow:
+        0 0 15px #00d9ff;
+
+}
+
+
+/* =====================================================
+   HISTORY 3D SYSTEM
+   ===================================================== */
+
+.history-3d-container {
+
+    position: relative;
+
+    perspective: 1500px;
+
+}
+
+
+/* =====================================================
+   HISTORY HEADER
+   ===================================================== */
+
+.history-3d-header {
+
+    position: relative;
+
+    padding: 30px;
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(30, 20, 70, 0.95),
+            rgba(5, 8, 22, 0.98)
+        );
+
+    border: 1px solid rgba(139, 92, 246, 0.30);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.40),
+        0 0 35px rgba(139, 92, 246, 0.08);
+
+    transform-style: preserve-3d;
+
+    overflow: hidden;
+
+}
+
+
+.history-3d-header::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    right: -100px;
+    top: -120px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139, 92, 246, 0.30),
+            transparent 70%
+        );
+
+    filter: blur(10px);
+
+}
+
+
+.history-3d-header h1 {
+
+    transform:
+        translateZ(35px);
+
+}
+
+
+.history-3d-header p {
+
+    transform:
+        translateZ(20px);
+
+    opacity: 0.75;
+
+}
+
+
+/* =====================================================
+   HISTORY SEARCH PANEL
+   ===================================================== */
+
+.history-search-3d {
+
+    position: relative;
+
+    padding: 20px;
+
+    margin-top: 20px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(10, 15, 35, 0.85);
+
+    border:
+        1px solid rgba(0, 217, 255, 0.20);
+
+    box-shadow:
+        inset 0 0 20px rgba(0, 217, 255, 0.04);
+
+    transform:
+        translateZ(20px);
+
+}
+
+
+.history-search-3d input,
+.history-search-3d select {
+
+    background:
+        rgba(5, 8, 22, 0.85);
+
+    color: white;
+
+    border:
+        1px solid rgba(0, 217, 255, 0.25);
+
+    border-radius: 12px;
+
+}
+
+
+.history-search-3d input:focus,
+.history-search-3d select:focus {
+
+    border-color:
+        #00d9ff;
+
+    box-shadow:
+        0 0 20px rgba(0, 217, 255, 0.20);
+
+}
+
+
+/* =====================================================
+   HISTORY TIMELINE
+   ===================================================== */
+
+.history-timeline {
+
+    position: relative;
+
+    padding-left: 35px;
+
+}
+
+
+.history-timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 10px;
+
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #00d9ff,
+            #8b5cf6,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px rgba(0, 217, 255, 0.5);
+
+}
+
+
+/* =====================================================
+   HISTORY ITEM
+   ===================================================== */
+
+.history-item-3d {
+
+    position: relative;
+
+    margin-bottom: 22px;
+
+    padding: 22px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.95),
+            rgba(7, 10, 25, 0.98)
+        );
+
+    border:
+        1px solid rgba(139, 92, 246, 0.20);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+
+}
+
+
+.history-item-3d::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -32px;
+
+    top: 25px;
+
+    width: 14px;
+    height: 14px;
+
+    border-radius: 50%;
+
+    background:
+        #00d9ff;
+
+    box-shadow:
+        0 0 10px #00d9ff,
+        0 0 25px rgba(0, 217, 255, 0.7);
+
+}
+
+
+.history-item-3d:hover {
+
+    transform:
+        translateX(8px)
+        translateY(-6px)
+        rotateX(2deg)
+        rotateY(-2deg)
+        translateZ(20px);
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.45),
+        0 0 25px rgba(139, 92, 246, 0.15);
+
+}
+
+
+/* =====================================================
+   HISTORY SENTIMENT BADGES
+   ===================================================== */
+
+.history-positive {
+
+    color: #22c55e;
+
+    background:
+        rgba(34, 197, 94, 0.10);
+
+    border:
+        1px solid rgba(34, 197, 94, 0.25);
+
+}
+
+
+.history-negative {
+
+    color: #ef4444;
+
+    background:
+        rgba(239, 68, 68, 0.10);
+
+    border:
+        1px solid rgba(239, 68, 68, 0.25);
+
+}
+
+
+.history-neutral {
+
+    color: #facc15;
+
+    background:
+        rgba(250, 204, 21, 0.10);
+
+    border:
+        1px solid rgba(250, 204, 21, 0.25);
+
+}
+
+
+.history-sentiment-badge {
+
+    display: inline-block;
+
+    padding: 6px 13px;
+
+    border-radius: 50px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+/* =====================================================
+   HISTORY CONFIDENCE
+   ===================================================== */
+
+.history-confidence {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+
+.history-confidence-bar {
+
+    flex: 1;
+
+    height: 7px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    overflow: hidden;
+
+}
+
+
+.history-confidence-progress {
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00d9ff,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 0 10px rgba(0, 217, 255, 0.5);
+
+}
+
+
+/* =====================================================
+   DELETE BUTTON 3D
+   ===================================================== */
+
+.history-delete-3d {
+
+    border: 1px solid rgba(239, 68, 68, 0.30);
+
+    background:
+        rgba(239, 68, 68, 0.08);
+
+    color: #ef4444;
+
+    border-radius: 10px;
+
+    transition:
+        all 0.25s ease;
+
+}
+
+
+.history-delete-3d:hover {
+
+    transform:
+        translateZ(15px)
+        scale(1.05);
+
+    background:
+        rgba(239, 68, 68, 0.18);
+
+    box-shadow:
+        0 0 18px rgba(239, 68, 68, 0.25);
+
+}
+
+
+/* =====================================================
+   DASHBOARD RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .dashboard-stat-3d {
+
+        min-height: 140px;
+
+    }
+
+    .dashboard-stat-number {
+
+        font-size: 32px;
+
+    }
+
+    .history-timeline {
+
+        padding-left: 25px;
+
+    }
+
+}
+
+/* =====================================================
+   DASHBOARD + HISTORY 3D SYSTEM
+   ===================================================== */
+
+
+/* =====================================================
+   3D CARD BASE
+   ===================================================== */
+
+.dashboard-3d-card {
+
+    position: relative;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+/* =====================================================
+   GLASS REFLECTION
+   ===================================================== */
+
+.dashboard-3d-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 60%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .7s ease;
+
+    pointer-events: none;
+
+}
+
+
+.dashboard-3d-card:hover::after {
+
+    left: 130%;
+
+}
+
+
+/* =====================================================
+   3D STAT ICON
+   ===================================================== */
+
+.stat-icon {
+
+    transform:
+        translateZ(30px);
+
+    transition:
+        transform .3s ease;
+
+}
+
+
+.dashboard-3d-card:hover
+.stat-icon {
+
+    transform:
+        translateZ(50px)
+        scale(1.08)
+        rotateZ(3deg);
+
+}
+
+
+/* =====================================================
+   CHART 3D
+   ===================================================== */
+
+.chart-container {
+
+    transform:
+        translateZ(20px);
+
+}
+
+
+/* =====================================================
+   HISTORY 3D ITEM
+   ===================================================== */
+
+.history-item-3d {
+
+    transform-style:
+        preserve-3d;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+
+}
+
+
+/* =====================================================
+   HISTORY SEARCH
+   ===================================================== */
+
+.history-search-3d {
+
+    transform-style:
+        preserve-3d;
+
+}
+
+
+/* =====================================================
+   BUTTON 3D
+   ===================================================== */
+
+.dashboard-btn,
+.history-nav-btn,
+.history-search-btn,
+.delete-btn {
+
+    transform-style:
+        preserve-3d;
+
+}
+
+
+/* =====================================================
+   REDUCE MOTION
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .dashboard-3d-card,
+    .history-item-3d,
+    .history-3d-header,
+    .history-search-3d {
+
+        transition: none !important;
+
+    }
+
+}
+
+/* =====================================================
+   DASHBOARD 3D DESIGN
+   ===================================================== */
+
+   * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #fff700 0%,
+            #d7e900 40%,
+            #a9c900 100%
+        );
+
+    color: white;
+}
+
+
+/* =========================
+   NAVBAR 3D
+========================= */
+
+.navbar {
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 35px;
+
+    background: linear-gradient(
+        145deg,
+        #202020,
+        #050505
+    );
+
+    border-bottom: 2px solid #555;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.7),
+        inset 0 1px 2px rgba(255,255,255,.2);
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 21px;
+    font-weight: bold;
+
+    text-shadow:
+        2px 3px 5px black;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+
+    transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links .active {
+    color: #ffe600;
+
+    text-shadow:
+        0 0 15px #ffe600;
+
+    transform:
+        translateY(-3px);
+}
+
+.gemini-btn {
+    padding: 12px 20px;
+
+    border: none;
+    border-radius: 15px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            145deg,
+            #444,
+            #111
+        );
+
+    box-shadow:
+        7px 7px 15px #000,
+        -3px -3px 8px #555;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.gemini-btn:hover {
+    transform:
+        translateY(-5px)
+        scale(1.04);
+
+    box-shadow:
+        0 0 20px #4d8cff,
+        8px 10px 20px #000;
+}
+
+
+/* =========================
+   MAIN DASHBOARD
+========================= */
+
+.dashboard {
+    max-width: 1450px;
+    margin: auto;
+
+    padding: 35px;
+
+    perspective: 1200px;
+}
+
+
+/* =========================
+   DASHBOARD TITLE
+========================= */
+
+.dashboard-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.title-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            white,
+            #999
+        );
+
+    box-shadow:
+        8px 10px 20px rgba(0,0,0,.6),
+        inset 2px 2px 5px white;
+
+    transform:
+        translateZ(30px);
+}
+
+.dashboard-title h1 {
+    margin-top: 10px;
+
+    font-size: 55px;
+
+    font-weight: 900;
+
+    text-shadow:
+        3px 3px 0 #777,
+        6px 8px 12px #333,
+        0 0 20px rgba(255,255,255,.6);
+}
+
+.dashboard-title p {
+    color: #333;
+    font-weight: bold;
+}
+
+
+/* =========================
+   STAT CARDS
+========================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    min-height: 145px;
+
+    padding: 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #222,
+            #050505
+        );
+
+    border: 1px solid #555;
+
+    box-shadow:
+        10px 12px 25px rgba(0,0,0,.7),
+        -4px -4px 12px rgba(255,255,255,.18),
+        inset 0 0 15px rgba(255,255,255,.04);
+
+    transform-style: preserve-3d;
+
+    transition: .35s;
+}
+
+
+/* ⭐ MAIN 3D EFFECT */
+
+.stat-card:hover {
+    transform:
+        translateY(-12px)
+        rotateX(5deg)
+        rotateY(-5deg)
+        scale(1.03);
+
+    box-shadow:
+        15px 25px 35px rgba(0,0,0,.8),
+        0 0 25px rgba(255,255,255,.25);
+}
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #555,
+            #111
+        );
+
+    box-shadow:
+        7px 8px 15px #000,
+        -3px -3px 8px #777;
+
+    transform:
+        translateZ(30px);
+}
+
+.stat-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.stat-card strong {
+    font-size: 38px;
+
+    text-shadow:
+        3px 4px 6px #000;
+}
+
+
+/* COLORS */
+
+.positive strong {
+    color: #00ff91;
+
+    text-shadow:
+        0 0 15px #00ff91;
+}
+
+.negative strong {
+    color: #ff4050;
+
+    text-shadow:
+        0 0 15px #ff4050;
+}
+
+.neutral strong {
+    color: #ffd52e;
+
+    text-shadow:
+        0 0 15px #ffd52e;
+}
+
+
+/* =========================
+   CHART CARDS
+========================= */
+
+.chart-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 25px;
+
+    margin-bottom: 30px;
+}
+
+.chart-card {
+    min-height: 430px;
+
+    padding: 25px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e83a12,
+            #941b08
+        );
+
+    border: 2px solid #ff6848;
+
+    box-shadow:
+        12px 18px 30px rgba(0,0,0,.65),
+        inset 0 0 20px rgba(255,255,255,.08);
+
+    transform-style: preserve-3d;
+
+    transition: .35s;
+}
+
+.chart-card:hover {
+    transform:
+        translateY(-8px)
+        rotateX(3deg);
+
+    box-shadow:
+        15px 25px 40px rgba(0,0,0,.8),
+        0 0 25px rgba(255,80,40,.4);
+}
+
+.chart-card h2 {
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        3px 4px 6px #550f04;
+}
+
+
+/* =========================
+   3D PIE CHART
+========================= */
+
+.pie-chart {
+    width: 290px;
+    height: 290px;
+
+    margin: 20px auto;
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            #16aef5 0deg 360deg
+        );
+
+    border: 5px solid white;
+
+    box-shadow:
+        15px 20px 25px rgba(0,0,0,.6),
+        inset -15px -15px 25px rgba(0,0,0,.3),
+        inset 10px 10px 20px rgba(255,255,255,.3);
+
+    transition: .4s;
+}
+
+.pie-chart:hover {
+    transform:
+        translateZ(40px)
+        rotateZ(5deg)
+        scale(1.05);
+}
+
+
+/* =========================
+   LEGEND
+========================= */
+
+.legend {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+.legend span {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.legend i {
+    width: 14px;
+    height: 14px;
+
+    border-radius: 4px;
+
+    display: inline-block;
+}
+
+.positive-dot {
+    background: #16aef5;
+}
+
+.negative-dot {
+    background: #ff4141;
+}
+
+.neutral-dot {
+    background: #ffd21c;
+}
+
+
+/* =========================
+   BAR CHART
+========================= */
+
+.bar-chart {
+    height: 300px;
+
+    display: flex;
+
+    align-items: end;
+    justify-content: center;
+
+    gap: 50px;
+
+    padding: 20px;
+
+    border-bottom: 2px solid white;
+}
+
+.bar {
+    width: 80px;
+
+    position: relative;
+
+    border-radius:
+        12px 12px 4px 4px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    box-shadow:
+        8px 10px 15px rgba(0,0,0,.6),
+        inset 4px 4px 8px rgba(255,255,255,.3);
+
+    transition: .4s;
+}
+
+.bar:hover {
+    transform:
+        translateY(-8px)
+        scale(1.05);
+
+    box-shadow:
+        10px 15px 25px rgba(0,0,0,.8);
+}
+
+.positive-bar {
+    height: 240px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6040d0,
+            #a879ff
+        );
+}
+
+.negative-bar {
+    height: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff3030,
+            #ff7777
+        );
+}
+
+.neutral-bar {
+    height: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffb900,
+            #ffe16b
+        );
+}
+
+.bar span {
+    position: absolute;
+
+    top: -28px;
+
+    font-weight: bold;
+}
+
+.bar label {
+    position: absolute;
+
+    bottom: -30px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   BOTTOM PANELS
+========================= */
+
+.bottom-grid {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr;
+
+    gap: 25px;
+}
+
+.panel {
+    padding: 25px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #222,
+            #060606
+        );
+
+    border: 1px solid #555;
+
+    box-shadow:
+        10px 15px 25px rgba(0,0,0,.7),
+        inset 0 0 15px rgba(255,255,255,.05);
+
+    transform-style: preserve-3d;
+
+    transition: .3s;
+}
+
+.panel:hover {
+    transform:
+        translateY(-7px)
+        rotateX(2deg);
+
+    box-shadow:
+        15px 25px 35px rgba(0,0,0,.8);
+}
+
+.panel h2 {
+    margin-bottom: 20px;
+
+    text-shadow:
+        2px 3px 5px #000;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 14px;
+
+    text-align: left;
+
+    border-bottom:
+        1px solid #333;
+}
+
+th {
+    color: #aaa;
+}
+
+tr {
+    transition: .25s;
+}
+
+tr:hover {
+    background:
+        rgba(255,255,255,.06);
+
+    transform:
+        scale(1.01);
+}
+
+.text-positive {
+    color: #00ff91;
+}
+
+.text-negative {
+    color: #ff4141;
+}
+
+.text-neutral {
+    color: #ffd21c;
+}
+
+
+/* =========================
+   ML BRAIN 3D
+========================= */
+
+.model-panel {
+    text-align: center;
+}
+
+.brain {
+    width: 150px;
+    height: 150px;
+
+    margin: 20px auto;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 80px;
+
+    background:
+        radial-gradient(
+            circle,
+            #008cff,
+            #002b6b
+        );
+
+    box-shadow:
+        0 0 30px #008cff,
+        12px 15px 25px #000,
+        inset 5px 5px 15px #66cfff;
+
+    animation:
+        floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            translateZ(20px);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            translateZ(40px);
+    }
+}
+
+.model-info {
+    text-align: left;
+
+    line-height: 1.9;
+
+    color: #ddd;
+}
+
+.model-info b {
+    color: #55b8ff;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .chart-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .bottom-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard {
+        padding: 15px;
+    }
+
+    .stats-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .dashboard-title h1 {
+        font-size: 38px;
+    }
+
+    .pie-chart {
+        width: 220px;
+        height: 220px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+}
+
+/* =====================================================
+   FINAL HOME PAGE BLUE AI OVERRIDE
+   ===================================================== */
+
+body.ai-home-page {
+
+    min-height: 100vh;
+
+    color: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0, 217, 255, 0.20),
+            transparent 32%
+        ),
+
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(37, 99, 235, 0.25),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(124, 58, 237, 0.18),
+            transparent 38%
+        ),
+
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #031b3d 35%,
+            #003b73 65%,
+            #020617 100%
+        );
+
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   HOME PAGE 3D BLUE GRID
+   ===================================================== */
+
+body.ai-home-page::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: -20%;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    background-image:
+
+        linear-gradient(
+            rgba(0, 217, 255, 0.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0, 217, 255, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    transform:
+        perspective(600px)
+        rotateX(58deg)
+        translateY(80px)
+        scale(1.4);
+
+    transform-origin: center;
+
+    opacity: 0.55;
+
+    animation:
+        homeGridMove 12s linear infinite;
+
+}
+
+
+/* =====================================================
+   HOME PAGE BLUE LIGHT
+   ===================================================== */
+
+body.ai-home-page::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 600px;
+
+    height: 600px;
+
+    top: -250px;
+
+    right: -180px;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 200, 255, 0.22),
+            rgba(0, 110, 255, 0.08) 40%,
+            transparent 70%
+        );
+
+    filter: blur(20px);
+
+    animation:
+        homeBlueGlow 7s ease-in-out infinite alternate;
+
+}
+
+
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
+
+body.ai-home-page .hero-section {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(2, 20, 55, 0.78),
+            rgba(0, 72, 140, 0.58),
+            rgba(2, 20, 55, 0.82)
+        );
+
+    border:
+        1px solid
+        rgba(0, 217, 255, 0.22);
+
+    box-shadow:
+
+        inset 0 0 50px
+        rgba(0, 217, 255, 0.08),
+
+        0 20px 60px
+        rgba(0, 0, 0, 0.30);
+
+}
+
+
+/* =====================================================
+   HERO 3D GRID
+   ===================================================== */
+
+body.ai-home-page .hero-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -80px;
+
+    background-image:
+
+        linear-gradient(
+            rgba(0, 217, 255, 0.13) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0, 217, 255, 0.13) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    transform:
+        perspective(500px)
+        rotateX(58deg)
+        translateY(100px)
+        scale(1.5);
+
+    opacity: 0.45;
+
+    animation:
+        heroGridMove 10s linear infinite;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   HERO BLUE GLOW
+   ===================================================== */
+
+body.ai-home-page .hero-section::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+
+    height: 450px;
+
+    left: 50%;
+
+    top: 40%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 217, 255, 0.20),
+            transparent 68%
+        );
+
+    filter: blur(25px);
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   HERO CONTENT ABOVE EFFECTS
+   ===================================================== */
+
+body.ai-home-page .hero-section > * {
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+/* =====================================================
+   HERO TEXT
+   ===================================================== */
+
+body.ai-home-page .hero-section h1 {
+
+    color: #ffffff;
+
+    text-shadow:
+
+        0 0 12px
+        rgba(0, 217, 255, 0.45),
+
+        0 0 30px
+        rgba(37, 99, 235, 0.25);
+
+}
+
+
+body.ai-home-page .hero-section h1 span {
+
+    color: #00d9ff;
+
+    text-shadow:
+
+        0 0 12px #00d9ff,
+
+        0 0 28px
+        rgba(0, 217, 255, 0.65);
+
+}
+
+
+body.ai-home-page .hero-badge {
+
+    color: #8eeaff;
+
+    text-shadow:
+        0 0 10px
+        rgba(0, 217, 255, 0.65);
+
+}
+
+
+body.ai-home-page .hero-section p {
+
+    color: #d7f6ff;
+
+}
+
+
+/* =====================================================
+   GRID ANIMATION
+   ===================================================== */
+
+@keyframes homeGridMove {
+
+    0% {
+
+        transform:
+            perspective(600px)
+            rotateX(58deg)
+            translateY(80px)
+            scale(1.4);
+
+    }
+
+    100% {
+
+        transform:
+            perspective(600px)
+            rotateX(58deg)
+            translateY(135px)
+            scale(1.4);
+
+    }
+
+}
+
+
+@keyframes heroGridMove {
+
+    0% {
+
+        transform:
+            perspective(500px)
+            rotateX(58deg)
+            translateY(80px)
+            scale(1.5);
+
+    }
+
+    100% {
+
+        transform:
+            perspective(500px)
+            rotateX(58deg)
+            translateY(130px)
+            scale(1.5);
+
+    }
+
+}
+
+
+@keyframes homeBlueGlow {
+
+    0% {
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+
+        opacity: 0.65;
+
+    }
+
+    100% {
+
+        transform:
+            translate3d(-100px, 80px, 0)
+            scale(1.15);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    body.ai-home-page::before {
+
+        background-size: 40px 40px;
+
+        opacity: 0.35;
+
+    }
+
+    body.ai-home-page .hero-section::before {
+
+        background-size: 35px 35px;
+
+        opacity: 0.30;
+
+    }
+
+}

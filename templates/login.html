@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Sentiment Analysis | Login</title>
+
+
+    <!-- ========================================= -->
+    <!-- BOOTSTRAP -->
+    <!-- ========================================= -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- ========================================= -->
+    <!-- BOOTSTRAP ICONS -->
+    <!-- ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- ========================================= -->
+    <!-- CUSTOM CSS -->
+    <!-- ========================================= -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/3d-ai.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================= -->
+<!-- ANIMATED BACKGROUND -->
+<!-- ========================================= -->
+
+<div class="ai-background">
+
+    <div class="grid"></div>
+
+    <div class="particles">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+</div>
+
+
+<!-- ========================================= -->
+<!-- MAIN PAGE -->
+<!-- ========================================= -->
+
+<main class="login-page">
+
+
+    <!-- ========================================= -->
+    <!-- LEFT AI SECTION -->
+    <!-- ========================================= -->
+
+    <section class="ai-section">
+
+
+        <!-- BRAND -->
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="bi bi-braces"></i>
+
+            </div>
+
+            <div>
+
+                <h1>
+                    <span>AI</span>
+                    Sentiment Analysis
+                </h1>
+
+                <p>
+                    Understand. Analyze. Predict.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- AI DESCRIPTION -->
+
+        <div class="ai-description">
+
+            <h3>
+                Artificial
+                <br>
+                Intelligence
+            </h3>
+
+            <p>
+                Analyze. Predict. Understand.
+            </p>
+
+        </div>
+
+
+        <!-- ================================= -->
+        <!-- 3D AI BAG -->
+        <!-- ================================= -->
+
+        <div class="ai-3d-scene">
+
+
+            <div class="ai-bag">
+
+
+                <!-- HANDLE -->
+
+                <div class="bag-handle"></div>
+
+
+                <!-- LEFT STRAP -->
+
+                <div class="bag-strap-left"></div>
+
+
+                <!-- RIGHT STRAP -->
+
+                <div class="bag-strap-right"></div>
+
+
+                <!-- BAG BODY -->
+
+                <div class="bag-body"></div>
+
+
+                <!-- BAG TOP -->
+
+                <div class="bag-top"></div>
+
+
+                <!-- FRONT POCKET -->
+
+                <div class="bag-pocket"></div>
+
+
+                <!-- ZIPPER -->
+
+                <div class="bag-zipper"></div>
+
+
+                <!-- AI LOGO -->
+
+                <div class="ai-logo">
+
+                    AI
+
+                </div>
+
+
+            </div>
+
+
+            <!-- SHADOW -->
+
+            <div class="bag-shadow"></div>
+
+
+        </div>
+
+
+        <!-- AI TAG -->
+
+        <div class="ai-tag">
+
+            <span class="dot"></span>
+
+            AI Powered Sentiment Engine
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ========================================= -->
+    <!-- RIGHT LOGIN SECTION -->
+    <!-- ========================================= -->
+
+    <section class="login-section">
+
+
+        <!-- ================================= -->
+        <!-- LOGIN CARD -->
+        <!-- ================================= -->
+
+        <div class="login-card">
+
+
+            <!-- LOCK ICON -->
+
+            <div class="login-icon">
+
+                <i class="bi bi-lock-fill"></i>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h2>
+
+                Welcome Back
+
+            </h2>
+
+
+            <p class="login-subtitle">
+
+                Login to continue to your account
+
+            </p>
+
+
+            <!-- DECORATIVE LINE -->
+
+            <div class="neon-line">
+
+                <span></span>
+
+            </div>
+
+
+            <!-- ================================= -->
+            <!-- LOGIN FORM -->
+            <!-- ================================= -->
+
+            <form
+                method="POST"
+                action="/login">
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+
+                    <label>
+
+                        <i class="bi bi-envelope"></i>
+
+                        Email Address
+
+                    </label>
+
+
+                    <div class="input-box">
+
+
+                        <i class="bi bi-envelope input-icon"></i>
+
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+
+                    <label>
+
+                        <i class="bi bi-key-fill"></i>
+
+                        Password
+
+                    </label>
+
+
+                    <div class="input-box">
+
+
+                        <i class="bi bi-lock input-icon"></i>
+
+
+                        <input
+                            type="password"
+                            name="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required>
+
+
+                        <!-- SHOW PASSWORD -->
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword()">
+
+
+                            <i
+                                class="bi bi-eye"
+                                id="loginEye">
+                            </i>
+
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- REMEMBER -->
+
+                <div class="login-options">
+
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            name="remember">
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+
+                    <a href="#">
+
+                        Forgot Password?
+
+                    </a>
+
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-button">
+
+
+                    <span>
+
+                        Login
+
+                    </span>
+
+
+                    <i class="bi bi-arrow-right"></i>
+
+
+                </button>
+
+
+            </form>
+
+
+            <!-- ================================= -->
+            <!-- DIVIDER -->
+            <!-- ================================= -->
+
+            <div class="divider">
+
+                <span></span>
+
+                <p>
+                    or continue with
+                </p>
+
+                <span></span>
+
+            </div>
+
+
+            <!-- ================================= -->
+            <!-- SOCIAL BUTTONS -->
+            <!-- ================================= -->
+
+            <div class="social-login">
+
+
+                <button
+                    type="button"
+                    title="Google">
+
+
+                    <i class="bi bi-google"></i>
+
+
+                </button>
+
+
+                <button
+                    type="button"
+                    title="GitHub">
+
+
+                    <i class="bi bi-github"></i>
+
+
+                </button>
+
+
+                <button
+                    type="button"
+                    title="Microsoft">
+
+
+                    <i class="bi bi-microsoft"></i>
+
+
+                </button>
+
+
+            </div>
+
+
+            <!-- ================================= -->
+            <!-- REGISTER -->
+            <!-- ================================= -->
+
+            <p class="register-text">
+
+                Don't have an account?
+
+                <a href="/register">
+
+                    Create Account
+
+                </a>
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- ========================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================= -->
+
+<script
+    src="{{ url_for('static', filename='js/3d-ai.js') }}">
+</script>
+
+
+</body>
+
+</html>

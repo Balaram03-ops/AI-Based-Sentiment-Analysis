@@ -1,0 +1,2450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | AI Sentiment Analysis</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+         ===================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- =====================================================
+         3D AI CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/3d-ai.css') }}">
+
+
+    <!-- =====================================================
+         CHART.JS
+         ===================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js">
+    </script>
+
+
+    <!-- =====================================================
+         DASHBOARD CSS
+         ===================================================== -->
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: #ffffff;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #182848,
+                    #0b1020 45%,
+                    #050814 100%
+                );
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =================================================
+           BACKGROUND GLOW
+           ================================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+
+            height: 500px;
+
+            top: -200px;
+
+            left: -180px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 212, 255, 0.20),
+                    transparent 70%
+                );
+
+            filter: blur(15px);
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            animation:
+                dashboardGlowOne
+                8s ease-in-out infinite alternate;
+
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 550px;
+
+            height: 550px;
+
+            bottom: -280px;
+
+            right: -200px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(92, 70, 255, 0.22),
+                    transparent 70%
+                );
+
+            filter: blur(15px);
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            animation:
+                dashboardGlowTwo
+                10s ease-in-out infinite alternate;
+
+        }
+
+
+        @keyframes dashboardGlowOne {
+
+            from {
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
+            }
+
+            to {
+                transform:
+                    translate3d(100px, 70px, 0)
+                    scale(1.15);
+            }
+
+        }
+
+
+        @keyframes dashboardGlowTwo {
+
+            from {
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
+            }
+
+            to {
+                transform:
+                    translate3d(-100px, -80px, 0)
+                    scale(1.12);
+            }
+
+        }
+
+
+        /* =================================================
+           DASHBOARD NAVBAR
+           ================================================= */
+
+        .dashboard-navbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            width: 100%;
+
+            min-height: 70px;
+
+            padding: 0 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(3, 8, 20, 0.97),
+                    rgba(8, 15, 35, 0.97)
+                );
+
+            border-bottom:
+                1px solid
+                rgba(0, 217, 255, 0.15);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.35);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+        }
+
+
+        /* =================================================
+           BRAND
+           ================================================= */
+
+        .navbar-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #00d9ff;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+        }
+
+
+        .navbar-brand:hover {
+
+            color: #ffffff;
+
+        }
+
+
+        .navbar-brand i {
+
+            font-size: 25px;
+
+            text-shadow:
+                0 0 15px
+                rgba(0,217,255,0.6);
+
+        }
+
+
+        /* =================================================
+           NAVBAR LINKS
+           ================================================= */
+
+        .navbar-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+        }
+
+
+        .nav-item {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 10px 14px;
+
+            border-radius: 10px;
+
+            color:
+                rgba(255,255,255,0.82);
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition:
+                all 0.25s ease;
+
+        }
+
+
+        .nav-item:hover {
+
+            color: #ffffff;
+
+            background:
+                rgba(0,217,255,0.10);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =================================================
+           ACTIVE
+           ================================================= */
+
+        .nav-item.active {
+
+            color: #00d9ff;
+
+            background:
+                rgba(0,217,255,0.10);
+
+            box-shadow:
+                0 0 15px
+                rgba(0,217,255,0.08);
+
+        }
+
+
+        /* =================================================
+           PROFILE
+           ================================================= */
+
+        .profile-link {
+
+            color: #ffffff;
+
+        }
+
+
+        .profile-link:hover {
+
+            color: #00d9ff;
+
+            background:
+                rgba(0,217,255,0.12);
+
+            box-shadow:
+                0 0 20px
+                rgba(0,217,255,0.15);
+
+        }
+
+
+        /* =================================================
+           LOGOUT
+           ================================================= */
+
+        .logout-link:hover {
+
+            color: #ff6b81;
+
+            background:
+                rgba(255,92,122,0.10);
+
+        }
+
+
+        /* =================================================
+           MAIN CONTAINER
+           ================================================= */
+
+        .dashboard-container {
+
+            max-width: 1200px;
+
+            margin: 45px auto;
+
+            padding:
+                0 20px 60px;
+
+        }
+
+
+        /* =================================================
+           HEADER
+           ================================================= */
+
+        .dashboard-header-3d {
+
+            position: relative;
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+            padding: 32px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(0,217,255,0.10),
+                    rgba(76,70,255,0.08),
+                    rgba(255,255,255,0.025)
+                );
+
+            border:
+                1px solid
+                rgba(0,217,255,0.18);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+
+                0 25px 60px
+                rgba(0,0,0,0.35),
+
+                inset 0 1px 0
+                rgba(255,255,255,0.10);
+
+            overflow: hidden;
+
+        }
+
+
+        .dashboard-header-3d::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+
+            height: 220px;
+
+            top: -120px;
+
+            left: -80px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,217,255,0.25),
+                    transparent 70%
+                );
+
+            filter: blur(8px);
+
+            pointer-events: none;
+
+        }
+
+
+        .dashboard-header-3d::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+
+            height: 250px;
+
+            right: -120px;
+
+            bottom: -150px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(105,76,255,0.25),
+                    transparent 70%
+                );
+
+            filter: blur(10px);
+
+            pointer-events: none;
+
+        }
+
+
+        .dashboard-header-3d h1 {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-size: 42px;
+
+            font-weight: 800;
+
+            margin-bottom: 12px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00d9ff,
+                    #7c5cff,
+                    #00d9ff
+                );
+
+            background-size: 200%;
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            animation:
+                gradientMove
+                5s linear infinite;
+
+        }
+
+
+        @keyframes gradientMove {
+
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 200%;
+            }
+
+        }
+
+
+        .dashboard-header-3d p {
+
+            position: relative;
+
+            z-index: 2;
+
+            color:
+                rgba(255,255,255,0.68);
+
+            margin:
+                5px 0;
+
+            font-size: 15px;
+
+        }
+
+
+        .dashboard-header-3d strong {
+
+            color: #00d9ff;
+
+        }
+
+
+        /* =================================================
+           3D CARD
+           ================================================= */
+
+        .dashboard-3d-card {
+
+            position: relative;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.12),
+                    rgba(255,255,255,0.035)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.13);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+
+                0 18px 45px
+                rgba(0,0,0,0.35),
+
+                inset 0 1px 0
+                rgba(255,255,255,0.10);
+
+            transform-style:
+                preserve-3d;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+
+            overflow: hidden;
+
+        }
+
+
+        .dashboard-3d-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 200px;
+
+            height: 200px;
+
+            top: -100px;
+
+            right: -100px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0,212,255,0.20),
+                    transparent 70%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .dashboard-3d-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+
+            height: 150px;
+
+            bottom: -100px;
+
+            left: -80px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(105,76,255,0.16),
+                    transparent 70%
+                );
+
+            pointer-events: none;
+
+        }
+
+
+        .dashboard-3d-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+
+                0 28px 70px
+                rgba(0,0,0,0.50),
+
+                0 0 25px
+                rgba(0,212,255,0.12);
+
+        }
+
+
+        /* =================================================
+           STAT CARD
+           ================================================= */
+
+        .stat-card {
+
+            min-height: 180px;
+
+            padding: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+
+        }
+
+
+        .stat-icon {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 17px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+
+            margin-bottom: 12px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.10);
+
+            box-shadow:
+
+                0 10px 25px
+                rgba(0,0,0,0.25);
+
+        }
+
+
+        .stat-card h5 {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-bottom: 8px;
+
+            font-size: 15px;
+
+            color:
+                rgba(255,255,255,0.72);
+
+        }
+
+
+        .stat-number {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-size: 38px;
+
+            font-weight: 800;
+
+        }
+
+
+        /* =================================================
+           COLORS
+           ================================================= */
+
+        .total-color {
+            color: #00d9ff;
+        }
+
+
+        .positive {
+            color: #35e58c;
+        }
+
+
+        .negative {
+            color: #ff5c7a;
+        }
+
+
+        .neutral {
+            color: #ffd166;
+        }
+
+
+        /* =================================================
+           CHART
+           ================================================= */
+
+        .chart-card {
+
+            padding: 28px;
+
+            min-height: 430px;
+
+        }
+
+
+        .chart-title {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .chart-title i {
+
+            margin-right: 8px;
+
+            color: #00d9ff;
+
+        }
+
+
+        .chart-container {
+
+            position: relative;
+
+            height: 330px;
+
+        }
+
+
+        /* =================================================
+           MODEL COMPARISON SPECIAL CARD
+           ================================================= */
+
+        .model-comparison-card {
+
+            min-height: 480px;
+
+        }
+
+
+        /* =================================================
+           BUTTONS
+           ================================================= */
+
+        .dashboard-buttons {
+
+            text-align: center;
+
+            margin:
+                40px 0 10px;
+
+        }
+
+
+        .dashboard-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            padding:
+                12px 22px;
+
+            border-radius: 14px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            margin: 5px;
+
+            color: #ffffff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #087fdd,
+                    #694cff
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            box-shadow:
+                0 12px 25px
+                rgba(0,0,0,0.30);
+
+            transition:
+                all .25s ease;
+
+        }
+
+
+        .dashboard-btn:hover {
+
+            color: #ffffff;
+
+            transform:
+                translateY(-5px)
+                scale(1.03);
+
+        }
+
+
+        .dashboard-btn.secondary {
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.15);
+
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+           ================================================= */
+
+        @media(max-width: 768px) {
+
+            .dashboard-navbar {
+
+                padding: 12px 15px;
+
+                flex-direction: column;
+
+                gap: 12px;
+
+            }
+
+
+            .navbar-links {
+
+                width: 100%;
+
+                justify-content: center;
+
+                flex-wrap: wrap;
+
+            }
+
+
+            .nav-item {
+
+                padding:
+                    8px 10px;
+
+                font-size: 13px;
+
+            }
+
+
+            .dashboard-container {
+
+                margin-top: 25px;
+
+                padding:
+                    0 15px 40px;
+
+            }
+
+
+            .dashboard-header-3d {
+
+                padding: 25px;
+
+            }
+
+
+            .dashboard-header-3d h1 {
+
+                font-size: 32px;
+
+            }
+
+
+            .chart-container {
+
+                height: 290px;
+
+            }
+
+
+            .dashboard-btn {
+
+                width: 100%;
+
+                max-width: 300px;
+
+            }
+
+        }
+
+
+        @media(max-width: 480px) {
+
+            .dashboard-header-3d h1 {
+
+                font-size: 27px;
+
+            }
+
+
+            .dashboard-header-3d p {
+
+                font-size: 14px;
+
+            }
+
+
+            .stat-number {
+
+                font-size: 32px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     DASHBOARD NAVBAR
+     ===================================================== -->
+
+<nav class="dashboard-navbar">
+
+
+    <!-- BRAND -->
+
+    <a
+        href="{{ url_for('home') }}"
+        class="navbar-brand">
+
+        <i class="bi bi-robot"></i>
+
+        AI Sentiment Analysis
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="navbar-links">
+
+
+        <!-- HOME -->
+
+        <a
+            href="{{ url_for('home') }}"
+            class="nav-item">
+
+            <i class="bi bi-house-fill"></i>
+
+            Home
+
+        </a>
+
+
+        <!-- DASHBOARD -->
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="nav-item active">
+
+            <i class="bi bi-grid-1x2-fill"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <!-- HISTORY -->
+
+        <a
+            href="{{ url_for('history') }}"
+            class="nav-item">
+
+            <i class="bi bi-clock-history"></i>
+
+            History
+
+        </a>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="{{ url_for('profile') }}"
+            class="nav-item profile-link">
+
+            <i class="bi bi-person-circle"></i>
+
+            Profile
+
+        </a>
+
+
+        <!-- ADMIN PANEL -->
+
+        <a
+            href="{{ url_for('admin_login') }}"
+            class="nav-item">
+
+            <i class="bi bi-shield-lock-fill"></i>
+
+            Admin Panel
+
+        </a>
+
+
+        <!-- LOGOUT -->
+
+        <a
+            href="{{ url_for('logout') }}"
+            class="nav-item logout-link">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            Logout
+
+        </a>
+
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     MAIN DASHBOARD
+     ===================================================== -->
+
+<div class="container dashboard-container">
+
+
+    <!-- =================================================
+         HEADER
+         ================================================= -->
+
+    <div class="dashboard-header-3d">
+
+        <h1>
+
+            <i class="bi bi-grid-1x2-fill"></i>
+
+            AI Dashboard
+
+        </h1>
+
+
+        <p>
+
+            Welcome,
+
+            <strong>
+                {{ user.username }}
+            </strong>
+
+            👋
+
+        </p>
+
+
+        <p>
+
+            Monitor your sentiment analysis
+            performance in real time.
+
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         STATISTICS
+         ================================================= -->
+
+    <div class="row g-4">
+
+
+        <!-- TOTAL -->
+
+        <div class="col-md-3">
+
+            <div
+                class="dashboard-3d-card stat-card">
+
+                <div
+                    class="stat-icon total-color">
+
+                    <i
+                        class="bi bi-bar-chart-fill">
+                    </i>
+
+                </div>
+
+
+                <h5>
+                    Total Predictions
+                </h5>
+
+
+                <div
+                    class="stat-number total-color">
+
+                    {{ total_predictions }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- POSITIVE -->
+
+        <div class="col-md-3">
+
+            <div
+                class="dashboard-3d-card stat-card">
+
+                <div
+                    class="stat-icon positive">
+
+                    <i
+                        class="bi bi-emoji-smile-fill">
+                    </i>
+
+                </div>
+
+
+                <h5 class="positive">
+                    Positive
+                </h5>
+
+
+                <div
+                    class="stat-number positive">
+
+                    {{ positive_count }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NEGATIVE -->
+
+        <div class="col-md-3">
+
+            <div
+                class="dashboard-3d-card stat-card">
+
+                <div
+                    class="stat-icon negative">
+
+                    <i
+                        class="bi bi-emoji-frown-fill">
+                    </i>
+
+                </div>
+
+
+                <h5 class="negative">
+                    Negative
+                </h5>
+
+
+                <div
+                    class="stat-number negative">
+
+                    {{ negative_count }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- NEUTRAL -->
+
+        <div class="col-md-3">
+
+            <div
+                class="dashboard-3d-card stat-card">
+
+                <div
+                    class="stat-icon neutral">
+
+                    <i
+                        class="bi bi-emoji-neutral-fill">
+                    </i>
+
+                </div>
+
+
+                <h5 class="neutral">
+                    Neutral
+                </h5>
+
+
+                <div
+                    class="stat-number neutral">
+
+                    {{ neutral_count }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         CHART DATA
+         ================================================= -->
+
+    <div
+        id="chartData"
+
+        data-positive="{{ positive_count }}"
+
+        data-negative="{{ negative_count }}"
+
+        data-neutral="{{ neutral_count }}"
+
+        data-trend-labels='{{ trend_labels | tojson | safe }}'
+
+        data-trend-counts='{{ trend_counts | tojson | safe }}'
+
+        data-model-comparison='{{ model_comparison | tojson | safe }}'>
+
+    </div>
+
+
+    <!-- =================================================
+         SENTIMENT PIE + BAR
+         ================================================= -->
+
+    <div class="row g-4 mt-4">
+
+
+        <!-- PIE -->
+
+        <div class="col-md-6">
+
+            <div
+                class="dashboard-3d-card chart-card">
+
+                <div class="chart-title">
+
+                    <i
+                        class="bi bi-pie-chart-fill">
+                    </i>
+
+                    Sentiment Distribution
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="sentimentPieChart">
+                    </canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- BAR -->
+
+        <div class="col-md-6">
+
+            <div
+                class="dashboard-3d-card chart-card">
+
+                <div class="chart-title">
+
+                    <i
+                        class="bi bi-bar-chart-fill">
+                    </i>
+
+                    Sentiment Comparison
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="sentimentBarChart">
+                    </canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MACHINE LEARNING MODEL COMPARISON
+         ===================================================== -->
+
+    <div class="row mt-4">
+
+        <div class="col-12">
+
+            <div
+                class="dashboard-3d-card chart-card model-comparison-card">
+
+                <div class="chart-title">
+
+                    <i class="bi bi-cpu-fill"></i>
+
+                    Machine Learning Model Comparison
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="modelComparisonChart">
+                    </canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         DAILY TREND
+         ================================================= -->
+
+    <div class="row mt-4">
+
+        <div class="col-12">
+
+            <div
+                class="dashboard-3d-card chart-card">
+
+                <div class="chart-title">
+
+                    <i
+                        class="bi bi-graph-up-arrow">
+                    </i>
+
+                    Daily Prediction Trend
+
+                </div>
+
+
+                <div class="chart-container">
+
+                    <canvas
+                        id="predictionTrendChart">
+                    </canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         DASHBOARD BUTTONS
+         ================================================= -->
+
+    <div class="dashboard-buttons">
+
+
+        <!-- HISTORY -->
+
+        <a
+            href="{{ url_for('history') }}"
+            class="dashboard-btn secondary">
+
+            <i
+                class="bi bi-clock-history">
+            </i>
+
+            View Prediction History
+
+        </a>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="{{ url_for('profile') }}"
+            class="dashboard-btn secondary">
+
+            <i
+                class="bi bi-person-circle">
+            </i>
+
+            My Profile
+
+        </a>
+
+
+        <!-- NEW ANALYSIS -->
+
+        <a
+            href="{{ url_for('home') }}"
+            class="dashboard-btn">
+
+            <i
+                class="bi bi-robot">
+            </i>
+
+            Start New Analysis
+
+        </a>
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =================================================
+           CHART DATA ELEMENT
+           ================================================= */
+
+        const chartData =
+            document.getElementById(
+                "chartData"
+            );
+
+
+        if (!chartData) {
+
+            console.error(
+                "Chart data element not found."
+            );
+
+            return;
+
+        }
+
+
+        /* =================================================
+           SENTIMENT COUNTS
+           ================================================= */
+
+        const positive =
+            Number(
+                chartData.dataset.positive || 0
+            );
+
+
+        const negative =
+            Number(
+                chartData.dataset.negative || 0
+            );
+
+
+        const neutral =
+            Number(
+                chartData.dataset.neutral || 0
+            );
+
+
+        /* =================================================
+           TREND DATA
+           ================================================= */
+
+        let trendLabels = [];
+
+        let trendCounts = [];
+
+
+        try {
+
+            trendLabels =
+                JSON.parse(
+                    chartData.dataset.trendLabels || "[]"
+                );
+
+
+            trendCounts =
+                JSON.parse(
+                    chartData.dataset.trendCounts || "[]"
+                );
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Trend data error:",
+                error
+            );
+
+        }
+
+
+        /* =================================================
+           MODEL COMPARISON DATA
+           ================================================= */
+
+        let modelComparison = [];
+
+
+        try {
+
+            modelComparison =
+                JSON.parse(
+                    chartData.dataset.modelComparison || "[]"
+                );
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Model comparison data error:",
+                error
+            );
+
+        }
+
+
+        /* =================================================
+           COMMON FONT
+           ================================================= */
+
+        const commonFont = {
+
+            family:
+                "Segoe UI, Arial, sans-serif",
+
+            size: 13
+
+        };
+
+
+        /* =================================================
+           PIE CHART
+           ================================================= */
+
+        const pieCanvas =
+            document.getElementById(
+                "sentimentPieChart"
+            );
+
+
+        if (pieCanvas) {
+
+            new Chart(
+                pieCanvas,
+                {
+
+                    type: "doughnut",
+
+                    data: {
+
+                        labels: [
+                            "Positive",
+                            "Negative",
+                            "Neutral"
+                        ],
+
+                        datasets: [
+
+                            {
+
+                                data: [
+                                    positive,
+                                    negative,
+                                    neutral
+                                ],
+
+                                backgroundColor: [
+
+                                    "rgba(53,229,140,0.85)",
+
+                                    "rgba(255,92,122,0.85)",
+
+                                    "rgba(255,209,102,0.85)"
+
+                                ],
+
+                                borderColor: [
+
+                                    "#35e58c",
+                                    "#ff5c7a",
+                                    "#ffd166"
+
+                                ],
+
+                                borderWidth: 2,
+
+                                hoverOffset: 10
+
+                            }
+
+                        ]
+
+                    },
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+
+                        cutout: "62%",
+
+                        plugins: {
+
+                            legend: {
+
+                                position: "bottom",
+
+                                labels: {
+
+                                    color: "#ffffff",
+
+                                    font: commonFont,
+
+                                    padding: 20,
+
+                                    usePointStyle: true
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           BAR CHART
+           ================================================= */
+
+        const barCanvas =
+            document.getElementById(
+                "sentimentBarChart"
+            );
+
+
+        if (barCanvas) {
+
+            new Chart(
+                barCanvas,
+                {
+
+                    type: "bar",
+
+                    data: {
+
+                        labels: [
+                            "Positive",
+                            "Negative",
+                            "Neutral"
+                        ],
+
+                        datasets: [
+
+                            {
+
+                                label:
+                                    "Predictions",
+
+                                data: [
+                                    positive,
+                                    negative,
+                                    neutral
+                                ],
+
+                                backgroundColor: [
+
+                                    "rgba(53,229,140,0.75)",
+
+                                    "rgba(255,92,122,0.75)",
+
+                                    "rgba(255,209,102,0.75)"
+
+                                ],
+
+                                borderColor: [
+
+                                    "#35e58c",
+                                    "#ff5c7a",
+                                    "#ffd166"
+
+                                ],
+
+                                borderWidth: 2,
+
+                                borderRadius: 10
+
+                            }
+
+                        ]
+
+                    },
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+
+                        scales: {
+
+                            x: {
+
+                                ticks: {
+
+                                    color: "#ffffff",
+
+                                    font: commonFont
+
+                                },
+
+                                grid: {
+
+                                    color:
+                                        "rgba(255,255,255,0.07)"
+
+                                }
+
+                            },
+
+                            y: {
+
+                                beginAtZero: true,
+
+                                ticks: {
+
+                                    color: "#ffffff",
+
+                                    precision: 0,
+
+                                    font: commonFont
+
+                                },
+
+                                grid: {
+
+                                    color:
+                                        "rgba(255,255,255,0.07)"
+
+                                }
+
+                            }
+
+                        },
+
+                        plugins: {
+
+                            legend: {
+
+                                labels: {
+
+                                    color: "#ffffff",
+
+                                    font: commonFont
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           MACHINE LEARNING MODEL COMPARISON
+           ================================================= */
+
+        const modelComparisonCanvas =
+            document.getElementById(
+                "modelComparisonChart"
+            );
+
+
+        if (
+            modelComparisonCanvas &&
+            modelComparison.length > 0
+        ) {
+
+
+            const modelLabels =
+                modelComparison.map(
+                    item => item.model
+                );
+
+
+            const accuracyData =
+                modelComparison.map(
+                    item => item.accuracy * 100
+                );
+
+
+            const precisionData =
+                modelComparison.map(
+                    item => item.precision * 100
+                );
+
+
+            const recallData =
+                modelComparison.map(
+                    item => item.recall * 100
+                );
+
+
+            const f1Data =
+                modelComparison.map(
+                    item => item.f1_score * 100
+                );
+
+
+            new Chart(
+                modelComparisonCanvas,
+                {
+
+                    type: "bar",
+
+
+                    data: {
+
+                        labels:
+                            modelLabels,
+
+
+                        datasets: [
+
+                            /* ACCURACY */
+
+                            {
+
+                                label:
+                                    "Accuracy",
+
+                                data:
+                                    accuracyData,
+
+                                backgroundColor:
+                                    "rgba(0,217,255,0.75)",
+
+                                borderColor:
+                                    "#00d9ff",
+
+                                borderWidth: 2,
+
+                                borderRadius: 8
+
+                            },
+
+
+                            /* PRECISION */
+
+                            {
+
+                                label:
+                                    "Precision",
+
+                                data:
+                                    precisionData,
+
+                                backgroundColor:
+                                    "rgba(53,229,140,0.75)",
+
+                                borderColor:
+                                    "#35e58c",
+
+                                borderWidth: 2,
+
+                                borderRadius: 8
+
+                            },
+
+
+                            /* RECALL */
+
+                            {
+
+                                label:
+                                    "Recall",
+
+                                data:
+                                    recallData,
+
+                                backgroundColor:
+                                    "rgba(255,209,102,0.75)",
+
+                                borderColor:
+                                    "#ffd166",
+
+                                borderWidth: 2,
+
+                                borderRadius: 8
+
+                            },
+
+
+                            /* F1 SCORE */
+
+                            {
+
+                                label:
+                                    "F1 Score",
+
+                                data:
+                                    f1Data,
+
+                                backgroundColor:
+                                    "rgba(255,92,122,0.75)",
+
+                                borderColor:
+                                    "#ff5c7a",
+
+                                borderWidth: 2,
+
+                                borderRadius: 8
+
+                            }
+
+                        ]
+
+                    },
+
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+
+
+                        scales: {
+
+                            x: {
+
+                                ticks: {
+
+                                    color:
+                                        "#ffffff",
+
+                                    font:
+                                        commonFont
+
+                                },
+
+                                grid: {
+
+                                    color:
+                                        "rgba(255,255,255,0.07)"
+
+                                }
+
+                            },
+
+
+                            y: {
+
+                                beginAtZero: true,
+
+                                max: 100,
+
+                                ticks: {
+
+                                    color:
+                                        "#ffffff",
+
+                                    font:
+                                        commonFont,
+
+                                    callback:
+                                        function(value) {
+
+                                            return (
+                                                value + "%"
+                                            );
+
+                                        }
+
+                                },
+
+                                grid: {
+
+                                    color:
+                                        "rgba(255,255,255,0.07)"
+
+                                }
+
+                            }
+
+                        },
+
+
+                        plugins: {
+
+                            legend: {
+
+                                position:
+                                    "bottom",
+
+                                labels: {
+
+                                    color:
+                                        "#ffffff",
+
+                                    font:
+                                        commonFont,
+
+                                    padding:
+                                        18,
+
+                                    usePointStyle:
+                                        true
+
+                                }
+
+                            },
+
+
+                            tooltip: {
+
+                                callbacks: {
+
+                                    label:
+                                        function(context) {
+
+                                            return (
+                                                context.dataset.label +
+                                                ": " +
+                                                context.raw.toFixed(2) +
+                                                "%"
+                                            );
+
+                                        }
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =================================================
+           IF MODEL DATA IS NOT AVAILABLE
+           ================================================= */
+
+        else if (modelComparisonCanvas) {
+
+            const ctx =
+                modelComparisonCanvas.getContext("2d");
+
+
+            ctx.font =
+                "16px Segoe UI";
+
+
+            ctx.fillStyle =
+                "#ffffff";
+
+
+            ctx.textAlign =
+                "center";
+
+
+            ctx.fillText(
+                "Model comparison data not available.",
+                modelComparisonCanvas.width / 2,
+                modelComparisonCanvas.height / 2
+            );
+
+        }
+
+
+        /* =================================================
+           DAILY TREND
+           ================================================= */
+
+        const trendCanvas =
+            document.getElementById(
+                "predictionTrendChart"
+            );
+
+
+        if (trendCanvas) {
+
+            new Chart(
+                trendCanvas,
+                {
+
+                    type: "line",
+
+                    data: {
+
+                        labels:
+                            trendLabels,
+
+                        datasets: [
+
+                            {
+
+                                label:
+                                    "Daily Predictions",
+
+                                data:
+                                    trendCounts,
+
+                                borderColor:
+                                    "#00d9ff",
+
+                                backgroundColor:
+                                    "rgba(0,217,255,0.15)",
+
+                                borderWidth: 3,
+
+                                pointBackgroundColor:
+                                    "#00d9ff",
+
+                                pointBorderColor:
+                                    "#ffffff",
+
+                                pointBorderWidth: 2,
+
+                                pointRadius: 5,
+
+                                pointHoverRadius: 8,
+
+                                fill: true,
+
+                                tension: 0.4
+
+                            }
+
+                        ]
+
+                    },
+
+                    options: {
+
+                        responsive: true,
+
+                        maintainAspectRatio: false,
+
+                        interaction: {
+
+                            intersect: false,
+
+                            mode: "index"
+
+                        },
+
+                        scales: {
+
+                            x: {
+
+                                ticks: {
+
+                                    color:
+                                        "#ffffff",
+
+                                    font:
+                                        commonFont
+
+                                },
+
+                                grid: {
+
+                                    color:
+                                        "rgba(255,255,255,0.07)"
+
+                                }
+
+                            },
+
+                            y: {
+
+                                beginAtZero: true,
+
+                                ticks: {
+
+                                    color:
+                                        "#ffffff",
+
+                                    precision: 0,
+
+                                    font:
+                                        commonFont
+
+                                },
+
+                                grid: {
+
+                                    color:
+                                        "rgba(255,255,255,0.07)"
+
+                                }
+
+                            }
+
+                        },
+
+                        plugins: {
+
+                            legend: {
+
+                                labels: {
+
+                                    color:
+                                        "#ffffff",
+
+                                    font:
+                                        commonFont
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            );
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+<!-- =====================================================
+     BOOTSTRAP JS
+     ===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>

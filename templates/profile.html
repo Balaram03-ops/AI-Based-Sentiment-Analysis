@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | AI Sentiment Analysis</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+         ===================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <!-- =====================================================
+         3D AI CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/3d-ai.css') }}">
+
+
+    <!-- =====================================================
+         PROFILE PAGE CSS
+         ===================================================== -->
+
+    <style>
+
+        /* =================================================
+           GLOBAL
+           ================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: #ffffff;
+
+            overflow-x: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 15%,
+                    rgba(0, 217, 255, 0.22),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 85%,
+                    rgba(105, 76, 255, 0.25),
+                    transparent 32%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #020617,
+                    #07112f 45%,
+                    #10052e 100%
+                );
+
+        }
+
+
+        /* =================================================
+           BACKGROUND GLOW
+           ================================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 500px;
+
+            height: 500px;
+
+            top: -180px;
+
+            left: -180px;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(0, 217, 255, 0.28),
+                    transparent 70%
+                );
+
+            filter: blur(20px);
+
+            pointer-events: none;
+
+            z-index: -2;
+
+            animation:
+                profileGlowOne
+                8s ease-in-out infinite alternate;
+
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 550px;
+
+            height: 550px;
+
+            right: -220px;
+
+            bottom: -250px;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(105, 76, 255, 0.28),
+                    transparent 70%
+                );
+
+            filter: blur(20px);
+
+            pointer-events: none;
+
+            z-index: -2;
+
+            animation:
+                profileGlowTwo
+                10s ease-in-out infinite alternate;
+
+        }
+
+
+        @keyframes profileGlowOne {
+
+            from {
+
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
+
+            }
+
+            to {
+
+                transform:
+                    translate3d(100px, 80px, 0)
+                    scale(1.15);
+
+            }
+
+        }
+
+
+        @keyframes profileGlowTwo {
+
+            from {
+
+                transform:
+                    translate3d(0, 0, 0)
+                    scale(1);
+
+            }
+
+            to {
+
+                transform:
+                    translate3d(-100px, -80px, 0)
+                    scale(1.12);
+
+            }
+
+        }
+
+
+        /* =================================================
+           3D GRID
+           ================================================= */
+
+        .profile-background-grid {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: -1;
+
+            pointer-events: none;
+
+            opacity: 0.18;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0, 217, 255, 0.12) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(0, 217, 255, 0.12) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                55px 55px;
+
+            transform:
+                perspective(500px)
+                rotateX(55deg)
+                scale(1.8);
+
+            transform-origin:
+                center bottom;
+
+            animation:
+                gridMove
+                12s linear infinite;
+
+        }
+
+
+        @keyframes gridMove {
+
+            from {
+
+                background-position:
+                    0 0,
+                    0 0;
+
+            }
+
+            to {
+
+                background-position:
+                    0 55px,
+                    55px 0;
+
+            }
+
+        }
+
+
+        /* =================================================
+           NAVBAR
+           ================================================= */
+
+        .profile-navbar {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            min-height: 70px;
+
+            width: 100%;
+
+            padding:
+                0 35px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    rgba(2, 6, 23, 0.96),
+                    rgba(7, 17, 47, 0.96)
+                );
+
+            border-bottom:
+
+                1px solid
+                rgba(0, 217, 255, 0.18);
+
+            box-shadow:
+
+                0 10px 35px
+                rgba(0, 0, 0, 0.45);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+        }
+
+
+        /* =================================================
+           BRAND
+           ================================================= */
+
+        .profile-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #00d9ff;
+
+            text-decoration: none;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+        }
+
+
+        .profile-brand:hover {
+
+            color: #ffffff;
+
+        }
+
+
+        .profile-brand i {
+
+            font-size: 25px;
+
+            text-shadow:
+
+                0 0 15px
+                rgba(0, 217, 255, 0.7);
+
+        }
+
+
+        /* =================================================
+           NAVIGATION
+           ================================================= */
+
+        .profile-nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+        }
+
+
+        .profile-nav-link {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding:
+                10px 14px;
+
+            border-radius: 10px;
+
+            color:
+                rgba(255,255,255,0.82);
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition:
+                all 0.25s ease;
+
+        }
+
+
+        .profile-nav-link:hover {
+
+            color: #ffffff;
+
+            background:
+                rgba(0,217,255,0.10);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .profile-nav-link.active {
+
+            color: #00d9ff;
+
+            background:
+                rgba(0,217,255,0.10);
+
+            box-shadow:
+
+                0 0 18px
+                rgba(0,217,255,0.10);
+
+        }
+
+
+        .profile-nav-link.logout:hover {
+
+            color: #ff6b81;
+
+            background:
+                rgba(255,92,122,0.10);
+
+        }
+
+
+        /* =================================================
+           PROFILE PAGE
+           ================================================= */
+
+        .profile-page {
+
+            min-height:
+                calc(100vh - 70px);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding:
+                50px 20px 70px;
+
+        }
+
+
+        /* =================================================
+           PROFILE CARD
+           ================================================= */
+
+        .profile-card {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 650px;
+
+            padding:
+                40px;
+
+            border-radius: 30px;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.12),
+                    rgba(255,255,255,0.035)
+                );
+
+            border:
+
+                1px solid
+                rgba(0,217,255,0.18);
+
+            backdrop-filter:
+                blur(22px);
+
+            -webkit-backdrop-filter:
+                blur(22px);
+
+            box-shadow:
+
+                0 30px 80px
+                rgba(0,0,0,0.45),
+
+                inset 0 1px 0
+                rgba(255,255,255,0.12),
+
+                0 0 40px
+                rgba(0,150,255,0.08);
+
+            transform-style:
+                preserve-3d;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+        }
+
+
+        .profile-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            box-shadow:
+
+                0 40px 90px
+                rgba(0,0,0,0.50),
+
+                0 0 45px
+                rgba(0,180,255,0.12);
+
+        }
+
+
+        /* =================================================
+           CARD GLOW
+           ================================================= */
+
+        .profile-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+
+            height: 250px;
+
+            top: -150px;
+
+            left: -100px;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(0,217,255,0.25),
+                    transparent 70%
+                );
+
+            filter: blur(8px);
+
+            pointer-events: none;
+
+        }
+
+
+        .profile-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+
+            height: 280px;
+
+            right: -150px;
+
+            bottom: -170px;
+
+            border-radius: 50%;
+
+            background:
+
+                radial-gradient(
+                    circle,
+                    rgba(105,76,255,0.25),
+                    transparent 70%
+                );
+
+            filter: blur(10px);
+
+            pointer-events: none;
+
+        }
+
+
+        /* =================================================
+           PROFILE TITLE
+           ================================================= */
+
+        .profile-title {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .profile-title h1 {
+
+            margin: 0;
+
+            font-size: 34px;
+
+            font-weight: 800;
+
+            background:
+
+                linear-gradient(
+                    90deg,
+                    #00d9ff,
+                    #7c5cff,
+                    #00d9ff
+                );
+
+            background-size: 200%;
+
+            -webkit-background-clip: text;
+
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+            animation:
+                profileTitleGradient
+                5s linear infinite;
+
+        }
+
+
+        @keyframes profileTitleGradient {
+
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 200%;
+            }
+
+        }
+
+
+        .profile-title p {
+
+            margin-top: 8px;
+
+            color:
+                rgba(255,255,255,0.60);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =================================================
+           PROFILE AVATAR
+           ================================================= */
+
+        .profile-avatar {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 150px;
+
+            height: 150px;
+
+            margin:
+                0 auto 30px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            background:
+
+                linear-gradient(
+                    145deg,
+                    rgba(0,217,255,0.16),
+                    rgba(105,76,255,0.16)
+                );
+
+            border:
+
+                3px solid
+                rgba(0,217,255,0.55);
+
+            box-shadow:
+
+                0 0 30px
+                rgba(0,217,255,0.20),
+
+                0 15px 40px
+                rgba(0,0,0,0.35),
+
+                inset 0 0 25px
+                rgba(0,217,255,0.08);
+
+            transform:
+                translateZ(35px);
+
+        }
+
+
+        /* =================================================
+           PROFILE PHOTO
+           ================================================= */
+
+        .profile-avatar img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+        }
+
+
+        /* =================================================
+           DEFAULT PROFILE ICON
+           ================================================= */
+
+        .profile-avatar i {
+
+            font-size: 90px;
+
+            color:
+                rgba(220,235,245,0.82);
+
+            text-shadow:
+
+                0 0 20px
+                rgba(0,217,255,0.20);
+
+        }
+
+
+        /* =================================================
+           FORM
+           ================================================= */
+
+        .profile-form {
+
+            position: relative;
+
+            z-index: 3;
+
+        }
+
+
+        .profile-field {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .profile-field label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            color:
+                rgba(255,255,255,0.82);
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .profile-field label i {
+
+            color: #00d9ff;
+
+            margin-right: 6px;
+
+        }
+
+
+        /* =================================================
+           TEXT / EMAIL INPUT
+           ================================================= */
+
+        .profile-field input[type="text"],
+        .profile-field input[type="email"] {
+
+            width: 100%;
+
+            padding:
+                13px 15px;
+
+            border-radius: 12px;
+
+            border:
+
+                1px solid
+                rgba(255,255,255,0.12);
+
+            outline: none;
+
+            color: #ffffff;
+
+            background:
+                rgba(0,0,0,0.22);
+
+            transition:
+                all 0.25s ease;
+
+        }
+
+
+        .profile-field input:focus {
+
+            border-color:
+                rgba(0,217,255,0.65);
+
+            box-shadow:
+
+                0 0 0 3px
+                rgba(0,217,255,0.08),
+
+                0 0 20px
+                rgba(0,217,255,0.08);
+
+        }
+
+
+        /* =================================================
+           EMAIL READ ONLY
+           ================================================= */
+
+        .profile-field input[readonly] {
+
+            opacity: 0.75;
+
+            cursor: not-allowed;
+
+        }
+
+
+        /* =================================================
+           FILE INPUT
+           ================================================= */
+
+        .profile-field input[type="file"] {
+
+            width: 100%;
+
+            padding: 10px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            color:
+                rgba(255,255,255,0.75);
+
+            background:
+                rgba(0,0,0,0.22);
+
+        }
+
+
+        .profile-field input[type="file"]::file-selector-button {
+
+            padding:
+                8px 14px;
+
+            margin-right: 10px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            color: #ffffff;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #087fdd,
+                    #694cff
+                );
+
+            cursor: pointer;
+
+        }
+
+
+        /* =================================================
+           FILE HELP TEXT
+           ================================================= */
+
+        .profile-help {
+
+            display: block;
+
+            margin-top: 7px;
+
+            color:
+                rgba(255,255,255,0.48);
+
+            font-size: 12px;
+
+        }
+
+
+        /* =================================================
+           SAVE BUTTON
+           ================================================= */
+
+        .save-profile-btn {
+
+            width: 100%;
+
+            margin-top: 8px;
+
+            padding:
+                13px 20px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #087fdd,
+                    #694cff
+                );
+
+            box-shadow:
+
+                0 12px 30px
+                rgba(0,100,255,0.25);
+
+            transition:
+                all 0.25s ease;
+
+        }
+
+
+        .save-profile-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+
+                0 18px 40px
+                rgba(0,130,255,0.35),
+
+                0 0 25px
+                rgba(0,217,255,0.15);
+
+        }
+
+
+        /* =================================================
+           BACK DASHBOARD BUTTON
+           ================================================= */
+
+        .back-dashboard {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 18px;
+
+        }
+
+
+        .back-dashboard a {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding:
+                10px 18px;
+
+            border-radius: 11px;
+
+            color:
+                rgba(255,255,255,0.78);
+
+            text-decoration: none;
+
+            background:
+                rgba(255,255,255,0.06);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            transition:
+                all 0.25s ease;
+
+        }
+
+
+        .back-dashboard a:hover {
+
+            color: #00d9ff;
+
+            background:
+                rgba(0,217,255,0.08);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =================================================
+           FLASH MESSAGE
+           ================================================= */
+
+        .profile-alert {
+
+            position: relative;
+
+            z-index: 10;
+
+            max-width: 650px;
+
+            margin:
+                25px auto 0;
+
+            padding:
+                0 20px;
+
+        }
+
+
+        .profile-alert .alert {
+
+            border-radius: 13px;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            backdrop-filter:
+                blur(12px);
+
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+           ================================================= */
+
+        @media(max-width: 768px) {
+
+            .profile-navbar {
+
+                padding:
+                    12px 15px;
+
+                flex-direction:
+                    column;
+
+                gap: 12px;
+
+            }
+
+
+            .profile-nav-links {
+
+                width: 100%;
+
+                justify-content:
+                    center;
+
+                flex-wrap: wrap;
+
+            }
+
+
+            .profile-nav-link {
+
+                padding:
+                    8px 10px;
+
+                font-size: 13px;
+
+            }
+
+
+            .profile-page {
+
+                padding:
+                    35px 15px 50px;
+
+            }
+
+
+            .profile-card {
+
+                padding:
+                    28px 20px;
+
+            }
+
+
+            .profile-title h1 {
+
+                font-size: 28px;
+
+            }
+
+
+            .profile-avatar {
+
+                width: 125px;
+
+                height: 125px;
+
+            }
+
+
+            .profile-avatar i {
+
+                font-size: 75px;
+
+            }
+
+        }
+
+
+        @media(max-width: 480px) {
+
+            .profile-brand span {
+
+                display: none;
+
+            }
+
+
+            .profile-title h1 {
+
+                font-size: 25px;
+
+            }
+
+
+            .profile-avatar {
+
+                width: 110px;
+
+                height: 110px;
+
+            }
+
+
+            .profile-avatar i {
+
+                font-size: 65px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     3D BACKGROUND GRID
+     ===================================================== -->
+
+<div class="profile-background-grid"></div>
+
+
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
+
+<nav class="profile-navbar">
+
+
+    <!-- BRAND -->
+
+    <a
+        href="{{ url_for('home') }}"
+        class="profile-brand">
+
+        <i class="bi bi-robot"></i>
+
+        <span>
+            AI Sentiment Analysis
+        </span>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="profile-nav-links">
+
+
+        <!-- HOME -->
+
+        <a
+            href="{{ url_for('home') }}"
+            class="profile-nav-link">
+
+            <i class="bi bi-house-fill"></i>
+
+            Home
+
+        </a>
+
+
+        <!-- DASHBOARD -->
+
+        <a
+            href="{{ url_for('dashboard') }}"
+            class="profile-nav-link">
+
+            <i class="bi bi-grid-1x2-fill"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <!-- HISTORY -->
+
+        <a
+            href="{{ url_for('history') }}"
+            class="profile-nav-link">
+
+            <i class="bi bi-clock-history"></i>
+
+            History
+
+        </a>
+
+
+        <!-- PROFILE -->
+
+        <a
+            href="{{ url_for('profile') }}"
+            class="profile-nav-link active">
+
+            <i class="bi bi-person-circle"></i>
+
+            Profile
+
+        </a>
+
+
+        <!-- LOGOUT -->
+
+        <a
+            href="{{ url_for('logout') }}"
+            class="profile-nav-link logout">
+
+            <i class="bi bi-box-arrow-right"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     FLASH MESSAGES
+     ===================================================== -->
+
+<div class="profile-alert">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div
+                    class="alert alert-{{ category }} alert-dismissible fade show"
+                    role="alert">
+
+                    <i
+                        class="bi
+                        {% if category == 'success' %}
+                            bi-check-circle-fill
+                        {% elif category == 'danger' %}
+                            bi-exclamation-triangle-fill
+                        {% else %}
+                            bi-info-circle-fill
+                        {% endif %}">
+                    </i>
+
+                    {{ message }}
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert">
+                    </button>
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+    {% endwith %}
+
+</div>
+
+
+<!-- =====================================================
+     PROFILE MAIN
+     ===================================================== -->
+
+<main class="profile-page">
+
+
+    <!-- =================================================
+         PROFILE CARD
+         ================================================= -->
+
+    <div class="profile-card">
+
+
+        <!-- =================================================
+             TITLE
+             ================================================= -->
+
+        <div class="profile-title">
+
+            <h1>
+
+                <i class="bi bi-person-circle"></i>
+
+                My Profile
+
+            </h1>
+
+
+            <p>
+
+                Manage your AI Sentiment Analysis account
+
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             PROFILE AVATAR
+             ================================================= -->
+
+        <div class="profile-avatar">
+
+
+            {% if user.profile_pic %}
+
+                <img
+                    src="{{ url_for(
+                        'static',
+                        filename='uploads/profile_pics/' + user.profile_pic
+                    ) }}"
+                    alt="Profile Photo">
+
+            {% else %}
+
+                <i class="bi bi-person-fill"></i>
+
+            {% endif %}
+
+
+        </div>
+
+
+        <!-- =================================================
+             PROFILE FORM
+             ================================================= -->
+
+        <form
+            class="profile-form"
+            action="{{ url_for('update_profile') }}"
+            method="POST"
+            enctype="multipart/form-data">
+
+
+            <!-- =================================================
+                 USERNAME
+                 ================================================= -->
+
+            <div class="profile-field">
+
+                <label for="username">
+
+                    <i class="bi bi-person-fill"></i>
+
+                    Username
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value="{{ user.username }}"
+                    placeholder="Enter username"
+                    required>
+
+            </div>
+
+
+            <!-- =================================================
+                 EMAIL
+                 ================================================= -->
+
+            <div class="profile-field">
+
+                <label for="email">
+
+                    <i class="bi bi-envelope-fill"></i>
+
+                    Email Address
+
+                </label>
+
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="{{ user.email }}"
+                    readonly>
+
+            </div>
+
+
+            <!-- =================================================
+                 PROFILE PHOTO
+                 ================================================= -->
+
+            <div class="profile-field">
+
+                <label for="profile_pic">
+
+                    <i class="bi bi-camera-fill"></i>
+
+                    Profile Photo
+
+                </label>
+
+
+                <input
+                    type="file"
+                    id="profile_pic"
+                    name="profile_pic"
+                    accept=".png,.jpg,.jpeg,.gif,image/png,image/jpeg,image/gif">
+
+
+                <span class="profile-help">
+
+                    Allowed formats:
+                    PNG, JPG, JPEG, GIF
+
+                </span>
+
+            </div>
+
+
+            <!-- =================================================
+                 SAVE BUTTON
+                 ================================================= -->
+
+            <button
+                type="submit"
+                class="save-profile-btn">
+
+                <i class="bi bi-check-circle-fill"></i>
+
+                Save Profile
+
+            </button>
+
+        </form>
+
+
+        <!-- =================================================
+             BACK TO DASHBOARD
+             ================================================= -->
+
+        <div class="back-dashboard">
+
+            <a
+                href="{{ url_for('dashboard') }}">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back to Dashboard
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     BOOTSTRAP JS
+     ===================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- =====================================================
+     PROFILE PHOTO PREVIEW
+     ===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const profileInput =
+            document.getElementById(
+                "profile_pic"
+            );
+
+
+        const profileAvatar =
+            document.querySelector(
+                ".profile-avatar"
+            );
+
+
+        if (
+            profileInput &&
+            profileAvatar
+        ) {
+
+            profileInput.addEventListener(
+                "change",
+                function () {
+
+                    const file =
+                        this.files[0];
+
+
+                    if (!file) {
+
+                        return;
+
+                    }
+
+
+                    const allowedTypes = [
+
+                        "image/png",
+                        "image/jpeg",
+                        "image/gif"
+
+                    ];
+
+
+                    if (
+                        !allowedTypes.includes(
+                            file.type
+                        )
+                    ) {
+
+                        alert(
+                            "Please select a PNG, JPG, JPEG or GIF image."
+                        );
+
+                        this.value = "";
+
+                        return;
+
+                    }
+
+
+                    const imageURL =
+                        URL.createObjectURL(
+                            file
+                        );
+
+
+                    profileAvatar.innerHTML = "";
+
+
+                    const image =
+                        document.createElement(
+                            "img"
+                        );
+
+
+                    image.src =
+                        imageURL;
+
+
+                    image.alt =
+                        "Profile Preview";
+
+
+                    profileAvatar.appendChild(
+                        image
+                    );
+
+                }
+            );
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>

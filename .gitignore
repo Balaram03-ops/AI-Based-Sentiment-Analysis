@@ -1,0 +1,42 @@
+# Large ML dataset
+dataset/
+
+# Large trained models
+random_forest_model.pkl
+vectorizer.pkl
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# User uploaded files
+static/uploads/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Sensitive configuration
+Config.py
+
+# Backup files
+*_backup.*
+*.bak
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log

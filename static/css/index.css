@@ -1,0 +1,552 @@
+/* =====================================================
+   AI SENTIMENT ANALYSIS
+   INDEX PAGE DESIGN
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(53, 217, 255, 0.25),
+            transparent 30%
+        ),
+        #d9f21b;
+
+    color: #111;
+
+}
+
+
+/* =====================================================
+   NAVBAR
+   ===================================================== */
+
+.ai-navbar {
+
+    width: 100%;
+
+    padding: 18px 6%;
+
+    background: #050505;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+
+}
+
+
+.ai-logo {
+
+    color: white;
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+}
+
+
+.ai-logo span {
+
+    color: #35d9ff;
+
+}
+
+
+.navbar-links {
+
+    display: flex;
+
+    gap: 28px;
+
+}
+
+
+.navbar-links a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+
+}
+
+
+.navbar-links a:hover {
+
+    color: #35d9ff;
+
+}
+
+
+.mobile-menu-btn {
+
+    display: none;
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 28px;
+
+}
+
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.analysis-container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: 55px auto;
+
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero-section {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+
+.hero-icon {
+
+    font-size: 60px;
+
+    margin-bottom: 12px;
+
+    filter:
+        drop-shadow(
+            0 0 15px rgba(53, 217, 255, 0.8)
+        );
+
+}
+
+
+.hero-section h1 {
+
+    font-size: 44px;
+
+    font-weight: 900;
+
+}
+
+
+.hero-section h1 span {
+
+    color: #008fc1;
+
+}
+
+
+.hero-section p {
+
+    margin-top: 10px;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+}
+
+
+/* =====================================================
+   ANALYSIS CARD
+   ===================================================== */
+
+.analysis-card {
+
+    background: #050505;
+
+    color: white;
+
+    padding: 35px;
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.4);
+
+}
+
+
+.card-title {
+
+    text-align: center;
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =====================================================
+   TEXTAREA
+   ===================================================== */
+
+.textarea-wrapper {
+
+    position: relative;
+
+}
+
+
+#sentimentText {
+
+    width: 100%;
+
+    min-height: 220px;
+
+    padding: 20px;
+
+    resize: vertical;
+
+    border-radius: 18px;
+
+    border: 2px solid #444;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 17px;
+
+    outline: none;
+
+    transition: 0.3s;
+
+}
+
+
+#sentimentText:focus {
+
+    border-color: #35d9ff;
+
+    box-shadow:
+        0 0 20px rgba(53, 217, 255, 0.3);
+
+}
+
+
+#sentimentText::placeholder {
+
+    color: #999;
+
+}
+
+
+/* =====================================================
+   CHARACTER COUNTER
+   ===================================================== */
+
+.char-counter {
+
+    text-align: right;
+
+    margin-top: 8px;
+
+    color: #aaa;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+
+.action-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-top: 25px;
+
+}
+
+
+.btn-clear,
+.btn-analyze {
+
+    padding: 14px 28px;
+
+    border-radius: 14px;
+
+    border: none;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.btn-clear {
+
+    background: #292929;
+
+    color: white;
+
+}
+
+
+.btn-clear:hover {
+
+    background: #444;
+
+    transform: translateY(-3px);
+
+}
+
+
+.btn-analyze {
+
+    background: #35d9ff;
+
+    color: #000;
+
+}
+
+
+.btn-analyze:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(53, 217, 255, 0.4);
+
+}
+
+
+/* =====================================================
+   RESULT CARD
+   ===================================================== */
+
+.result-card {
+
+    margin-top: 30px;
+
+    padding: 35px;
+
+    background: #050505;
+
+    color: white;
+
+    border-radius: 28px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 45px rgba(0, 0, 0, 0.4);
+
+}
+
+
+.result-title {
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    margin-bottom: 20px;
+
+}
+
+
+.prediction-value {
+
+    font-size: 45px;
+
+    font-weight: 900;
+
+    margin: 15px 0;
+
+    color: #35d9ff;
+
+}
+
+
+.confidence-text {
+
+    font-size: 18px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.confidence-container {
+
+    width: 100%;
+
+    height: 18px;
+
+    background: #333;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+
+.confidence-progress {
+
+    height: 100%;
+
+    background: #35d9ff;
+
+    border-radius: 20px;
+
+    transition: width 1s ease;
+
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+.ai-footer {
+
+    text-align: center;
+
+    padding: 25px;
+
+    font-size: 14px;
+
+    color: #222;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .navbar-links {
+
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: #050505;
+
+        flex-direction: column;
+
+        padding: 20px;
+
+        text-align: center;
+
+        z-index: 1000;
+
+    }
+
+
+    .navbar-links.mobile-open {
+
+        display: flex;
+
+    }
+
+
+    .mobile-menu-btn {
+
+        display: block;
+
+    }
+
+
+    .hero-section h1 {
+
+        font-size: 32px;
+
+    }
+
+
+    .analysis-card,
+    .result-card {
+
+        padding: 22px;
+
+    }
+
+
+    .action-buttons {
+
+        flex-direction: column;
+
+    }
+
+
+    .btn-clear,
+    .btn-analyze {
+
+        width: 100%;
+
+    }
+
+
+    .prediction-value {
+
+        font-size: 34px;
+
+    }
+
+}
