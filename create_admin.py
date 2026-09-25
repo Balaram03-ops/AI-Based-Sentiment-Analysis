@@ -4,15 +4,15 @@ from werkzeug.security import generate_password_hash
 conn = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Balaram@6371",
+    password="gvgvjjb",
     database="sentiment_analysis"
 )
 
 cursor = conn.cursor()
 
 name = "Admin"
-email = "admin@gmail.com"
-password = "admin123"
+email = "bffuujhv@gmail.com"
+password = "xbhveb"
 
 hashed_password = generate_password_hash(password)
 
