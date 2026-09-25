@@ -26,7 +26,7 @@ dataset/
 *.csv
 
 # Trained ML models
-*.pkl
+
 
 # User uploaded files
 static/uploads/

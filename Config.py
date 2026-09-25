@@ -58,10 +58,22 @@ class Config:
 
 
     # -----------------------------------------------------
+    # AIVEN CA CERTIFICATE
+    # -----------------------------------------------------
+
+    MYSQL_SSL_CA = os.path.join(
+        BASE_DIR,
+        "ca.pem"
+    )
+
+
+    # -----------------------------------------------------
     # ENCODE PASSWORD
     # -----------------------------------------------------
 
-    encoded_password = quote_plus(MYSQL_PASSWORD)
+    encoded_password = quote_plus(
+        MYSQL_PASSWORD
+    )
 
 
     # -----------------------------------------------------
@@ -74,6 +86,17 @@ class Config:
         f"{MYSQL_HOST}:{MYSQL_PORT}/"
         f"{MYSQL_DATABASE}"
     )
+
+
+    # -----------------------------------------------------
+    # MYSQL SSL CONFIGURATION
+    # -----------------------------------------------------
+
+    SQLALCHEMY_ENGINE_OPTIONS = {
+        "connect_args": {
+            "ssl_ca": MYSQL_SSL_CA
+        }
+    }
 
 
     # -----------------------------------------------------
