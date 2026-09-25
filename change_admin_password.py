@@ -9,7 +9,7 @@ import mysql.connector
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Balaram@6371",
+    password="AHrabss",
     database="sentiment_analysis"
 )
 
@@ -20,9 +20,9 @@ cursor = db.cursor()
 # ADMIN DETAILS
 # ==============================
 
-email = "admin@gmail.com"
+email = "gfshgdbb@ggbn"
 
-new_password = "Sonali@143"
+new_password = "ngybjhg@vv"
 
 
 # ==============================
