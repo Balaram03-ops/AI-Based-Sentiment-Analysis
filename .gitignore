@@ -1,21 +1,13 @@
-# Large ML dataset
-dataset/
-
-# Large trained models
-random_forest_model.pkl
-vectorizer.pkl
-
-# Database files
-*.db
-*.sqlite
-*.sqlite3
-
-# User uploaded files
-static/uploads/
-
 # Python cache
 __pycache__/
 *.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
 
 # Environment / secrets
 .env
@@ -25,18 +17,48 @@ __pycache__/
 # Sensitive configuration
 Config.py
 
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Large ML dataset
+dataset/
+*.csv
+
+# Trained ML models
+*.pkl
+
+# User uploaded files
+static/uploads/
+
 # Backup files
 *_backup.*
 *.bak
 
-# Virtual environments
-venv/
-.venv/
-env/
+# Logs
+*.log
 
-# IDE files
+# IDE
 .vscode/
 .idea/
 
-# Logs
-*.log
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build / distribution
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+tempCodeRunnerFile.py
